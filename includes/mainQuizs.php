@@ -40,8 +40,8 @@
     </div>
     <!-- list quiz -->
     <div>
-        <table class="table">
-            <thead>
+        <table class="table table-borderless">
+            <thead class="table-dark ">
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Title quiz</th>
@@ -64,41 +64,32 @@
                         $situation_quiz = 'public';
                     } else {
                         $situation_quiz = 'private';
-                    }
+                    } ?>
 
-                    print '
-                              <tr>
-                                <th scope="row">' . $i . '</th>
-                                <td>' . $quiz['title_quiz'] . '</td>
-                                <td>' . $quiz['quiz_description'] . '</td>
-                                <td>
-                                    <table>
-                                        <tr>
-                                            <td>
-                                                <input class="form-control" id="url' . $i . '" type="text" value="' . $quiz['url_quiz'] . '">
-                                            </td>
-                                            <td>
-                                                <button onclick="copyContent(\'' . $idEL . '\')" class="btn btn-success">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16">
-                                                        <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
-                                                        <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
-                                                    </svg>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </td>
-                                <td>' . $situation_quiz . '</td>
-                                <td>' . numerQuestionQuiz($quiz['id_quiz']) . '</td>
-                                <td>' . $quiz['quiz_duration'] . '</td>
-                                <td>
-                                    <a class="btn btn-success" data-toggle="modal" data-target="#editQuiz' . $quiz['id_quiz'] . '">Edit</a>
-                                    <a class="btn btn-success" href="../includes/manageQuiz.php?idQ=' . $quiz['id_quiz'] . '">Manage</a>
-                                    <a class="btn btn-danger" href="../includes/deleteQuiz.php?idQ=' . $quiz['id_quiz'] . '">Delete</a>
-                                    <a class="btn btn-danger" href="../includes/view_result.php?idQ=' . $quiz['id_quiz'] . '">View result</a>
-                                </td>
-                              </tr>
-                                       ';
+
+                    <tr>
+                        <th scope="row"><?php echo $i ?></th>
+                        <td><?php echo $quiz['title_quiz'] ?></td>
+                        <td><?php echo $quiz['quiz_description'] ?></td>
+                        <td>
+                            <div class="input-group">
+                                <input class="form-control mr-1" id="url<?php echo $i ?>" type="text" value="<?php echo $quiz['url_quiz'] ?>">
+                                <button onclick="copyContent('<?php echo $idEL ?>')" class="btn btn-sm btn-success">
+                                <span data-feather="clipboard"></span>
+                                </button>
+                            </div>
+                        </td>
+                        <td><span class="badge badge-<?php echo ($situation_quiz == 'public') ? 'success' : 'primary'; ?> rounded-pill d-inline"><?php echo $situation_quiz ?></span></td>
+                        <td><?php echo numerQuestionQuiz($quiz['id_quiz']) ?></td>
+                        <td><?php echo $quiz['quiz_duration'] ?></td>
+                        <td>
+                            <a class="btn btn-success" data-toggle="modal" data-target="#editQuiz<?php echo $quiz['id_quiz'] ?>"><span data-feather="edit"></span></a>
+                            <a class="btn btn-success" href="../includes/manageQuiz.php?idQ=<?php echo $quiz['id_quiz'] ?>"><span data-feather="sliders"></a>
+                            <a class="btn btn-danger" href="../includes/deleteQuiz.php?idQ=<?php echo $quiz['id_quiz'] ?>"><span data-feather="trash-2"></a>
+                            <a class="btn btn-danger" href="../includes/view_result.php?idQ=<?php echo $quiz['id_quiz'] ?>">View result</a>
+                        </td>
+                    </tr>
+                <?php
                 }
                 ?>
             </tbody>

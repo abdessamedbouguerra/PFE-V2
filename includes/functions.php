@@ -131,7 +131,7 @@ $requette ="SELECT * FROM quiz WHERE id_quiz=$idQ";
 //3- execute requette
 $resultat =$conn->query($requette);
 //4- result requette
-$quiz =$resultat->fetchAll();
+$quiz =$resultat->fetch();
 //var_dump($quizs);
 return $quiz;
 }

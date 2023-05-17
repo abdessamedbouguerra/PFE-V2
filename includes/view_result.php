@@ -21,7 +21,8 @@ $titleQ = getTitleQuiz($idQ);
 	<meta name="description" content="">
 	<meta name="author" content="">
 	<link rel="icon" href="/docs/4.1/assets/img/favicons/favicon.ico">
-
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
 	<title>Quizy</title>
 
 	<link rel="canonical" href="https://getbootstrap.com/docs/4.1/examples/dashboard/">
@@ -51,8 +52,8 @@ $titleQ = getTitleQuiz($idQ);
 				</div>
 				<!-- main content -->
 				<div>
-					<table class="table">
-						<thead>
+					<table class="table table-borderless">
+						<thead class="table-dark ">
 							<tr>
 								<th scope="col">#</th>
 								<th scope="col">First name</th>
@@ -70,18 +71,18 @@ $titleQ = getTitleQuiz($idQ);
 								$i++;
 								$full_name=getNameUsersPassQuiz($passageQuiz['id_user']);
 
-								print '
+								?>
                               <tr>
-                                <th scope="row">' . $i . '</th>
-                                <td>' . $full_name['first_name'] . '</td>
-                                <td>' . $full_name['last_name'] . '</td>
-                                <td>' . $passageQuiz['date'] . '</td>
-								<td>' . $passageQuiz['note'] . '</td>
+                                <th scope="row"><?php echo $i ?></th>
+                                <td><?php echo $full_name['first_name'] ?></td>
+                                <td><?php echo $full_name['last_name'] ?></td>
+                                <td><?php echo $passageQuiz['date'] ?></td>
+								<td><?php echo $passageQuiz['note'] ?></td>
                                 <td>
-                                    <a class="btn btn-danger" href="../includes/ViewAnswersUser.php?id_Quiz='.$idQ.'&id_user='.$passageQuiz['id_user'].'&id_passQuiz='.$passageQuiz['id_pass'].'&activeMarke=quizs">view answers</a>
+                                    <a class="btn btn-danger" href="../includes/ViewAnswersUser.php?id_Quiz=<?php echo$idQ?>&id_user=<?php echo$passageQuiz['id_user']?>&id_passQuiz=<?php echo$passageQuiz['id_pass']?>&activeMarke=quizs">view answers</a>
                                 </td>
                               </tr>
-                                       ';
+                              <?php
 							}
 							?>
 						</tbody>

@@ -19,7 +19,8 @@ $quizs = getAllQuizsOfUser($_SESSION['id_user']);
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="/docs/4.1/assets/img/favicons/favicon.ico">
-
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
     <title>Quizy</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.1/examples/dashboard/">
@@ -58,19 +59,15 @@ $quizs = getAllQuizsOfUser($_SESSION['id_user']);
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script>
-        window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')
-    </script>
     <script src="../js/popper.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
 
     <!-- Icons -->
-    <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+    <!-- https://unpkg.com/feather-icons/dist/feather.min.js -->
+    <script src="../js/feather.min.js"></script>
     <script>
         feather.replace()
     </script>
-    <!-- Graphs -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.7.1/dist/Chart.min.js"></script>
 
     <!-- copyContent  -->
     <script src="../js/copyContent.js"></script>
@@ -93,10 +90,12 @@ $quizs = getAllQuizsOfUser($_SESSION['id_user']);
                         <div class="form-group">
                             <textarea name="desription_quiz" class="form-control" placeholder="Desription of a quiz."></textarea>
                         </div>
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <input name="quiz_duration" type="text" class="form-control timepicker" id="timepicker" placeholder="Select a time">
-                            <!-- <input type="date_time_set"  min="00:00:00" max="23:59:59" name="quiz_duration" class="form-control" placeholder="00:00:00"> -->
-                        </div>
+                        </div> -->
+                        <div class="form-group">
+                                <input type="time" name="quiz_duration" class="form-control" value="<?php echo '00:00:00'; ?>" placeholder="time">
+                            </div>
                         <div class="form-group">
                             <input class="choose-file" type="file" name="image_quiz" class="form-control">
                         </div>

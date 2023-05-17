@@ -17,7 +17,8 @@ $quizs = getAllQuizsPublic();
 	<meta name="description" content="">
 	<meta name="author" content="">
 	<link rel="icon" href="/docs/4.1/assets/img/favicons/favicon.ico">
-
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
 	<title>Quizy</title>
 
 	<link rel="canonical" href="https://getbootstrap.com/docs/4.1/examples/dashboard/">
@@ -38,50 +39,69 @@ $quizs = getAllQuizsPublic();
 			<!-- sidebar -->
 			<?php
 			$activeMarke = 'passagequiz';
-			include '../includes/sidebar.php'; 
+			include '../includes/sidebar.php';
 			?>
 			<!-- main  -->
 			<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
 
 				<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
 					<h1 class="h2">Entering a special Quiz.</h1>
+					<div>
+						<form class="form-inline" method="post" action="passQuiz.php">
+							<div class="form-group mb-2">
+								<h4>Put the link:</h4>
+							</div>
+							<div class="form-group mx-sm-3 mb-2">
+								<input name="input_url" type="text" class="form-control" id="url" placeholder="https//exampel.com">
+							</div>
+							<button type="submit" class="btn btn-primary mb-2">Entering</button>
+						</form>
+					</div>
 				</div>
-				<div>
-					<form class="form-inline" method="post" action="passQuiz.php">
-						<div class="form-group mb-2">
-						<h4>Put the link:</h4>
-						</div>
-						<div class="form-group mx-sm-3 mb-2">
-							<input name="input_url" type="text" class="form-control" id="url" placeholder="https//exampel.com">
-						</div>
-						<button type="submit" class="btn btn-primary mb-2">Entering</button>
-					</form>
-				</div>
-				<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+
+				<div class="d-flex justify-content-center flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom ">
 					<h1 class="h2">Available Quizs to pass.</h1>
 				</div>
+
 				<!-- main content -->
 				<div>
 					<!-- list quiz -->
 					<div class="row col-12 mt-4">
 						<!-- card quiz -->
 						<?php
-						foreach ($quizs as $quiz)
-							print '
-            <div class="col-3">
-            <div class="card" style="width: 18rem;">
-                <img src="images/' . $quiz['image'] . '" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">' . $quiz['title_quiz'] . '</h5>
-                    <p class="card-text">' . $quiz['quiz_description'] . '</p>
-                    <a href="passQuiz.php?id=' . $quiz['id_quiz'] . '" class="btn btn-primary">Participate</a>
-                </div>
-            </div>
-        </div>
-            ';
+						foreach ($quizs as $quiz) {
 						?>
+							<div class="col-3 mb-3">
+								<div class="card position-relative" style="width: 18rem;">
+									<img src="../images/<?php echo $quiz['image'] ?>" class="card-img-top" alt="..." data-toggle="modal" data-target="#popup_<?php echo $quiz['id_quiz'] ?>">
+									<div class="card-body d-flex flex-column align-items-center">
+										<h5 class="card-title text-center"><?php echo $quiz['title_quiz'] ?></h5>
+										<p class="card-text text-center"><?php echo $quiz['quiz_description'] ?></p>
+									</div>
+								</div>
+								<div class="overlay"></div>
+							</div>
 
+							<!-- Popup for each card -->
+							<div class="modal fade" id="popup_<?php echo $quiz['id_quiz'] ?>" tabindex="-1" role="dialog" aria-labelledby="popupTitle_<?php echo $quiz['id_quiz'] ?>" aria-hidden="true">
+								<div class="modal-dialog modal-dialog-centered" role="document">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h5 class="modal-title text-center" id="popupTitle_<?php echo $quiz['id_quiz'] ?>"><?php echo $quiz['title_quiz'] ?></h5>
+										</div>
+										<div class="modal-body d-flex flex-column align-items-center">
+											<img src="../images/<?php echo $quiz['image'] ?>" class="card-img-top" alt="...">
+											<p class="text-center"><?php echo $quiz['quiz_description'] ?></p>
+											<a href="passQuiz.php?id=<?php echo $quiz['id_quiz'] ?>" class="btn btn-primary">Participate</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						<?php
+						}
+						?>
 					</div>
+
 				</div>
 
 			</main>
@@ -104,7 +124,17 @@ $quizs = getAllQuizsPublic();
 	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.7.1/dist/Chart.min.js"></script>
 
 	<!--  -->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/bootstrap-icons.min.js"></script>
 
+	<script>
+		$(document).ready(function() {
+			$('.card').click(function() {
+				var targetModalId = $(this).find('img').data('target');
+				$(targetModalId).modal('show');
+			});
+		});
+	</script>
 
 </body>
 

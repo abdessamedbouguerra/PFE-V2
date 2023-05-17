@@ -10,12 +10,12 @@ if (isset($_GET['id'])) {
 	$idQ = $_GET['id'];
 }
 if (isset($_POST['input_url'])) {
-	$input_url=$_POST['input_url'];
+	$input_url = $_POST['input_url'];
 	$conn = connect();
 	$requette = "SELECT * FROM quiz WHERE url_quiz='$input_url'";
 	$resultat = $conn->query($requette);
 	$idQ_tmp = $resultat->fetch();
-	$idQ=$idQ_tmp['id_quiz'];
+	$idQ = $idQ_tmp['id_quiz'];
 }
 $titleQuiz = getTitleQuiz($idQ);
 $questions = getAllQuestion($idQ);
@@ -32,7 +32,8 @@ $quiz = getQuizById($idQ);
 	<meta name="description" content="">
 	<meta name="author" content="">
 	<link rel="icon" href="/docs/4.1/assets/img/favicons/favicon.ico">
-
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
 	<title>Quizy</title>
 
 	<link rel="canonical" href="https://getbootstrap.com/docs/4.1/examples/dashboard/">
@@ -58,6 +59,55 @@ $quiz = getQuizById($idQ);
 			<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
 				<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
 					<h1 class="h2">Participation in <?php echo $titleQuiz; ?></h1>
+					
+					<!-- countdown -->
+					<div class="row">
+						<div class="col-sm-12">
+							<h1 id="countdown"></h1>
+						</div>
+					</div>
+					<!-- countdown scripts -->
+					<script>
+						// Get the time from the PHP variable
+						var timeString = "<?php echo $quiz['quiz_duration']; ?>";
+
+						// Split the time into hours, minutes, and seconds
+						var timeParts = timeString.split(':');
+						var hours = parseInt(timeParts[0]);
+						var minutes = parseInt(timeParts[1]);
+						var seconds = parseInt(timeParts[2]);
+
+						// Set the countdown date by adding the hours, minutes, and seconds to the current date and time
+						var countdownDate = new Date();
+						countdownDate.setHours(countdownDate.getHours() + hours);
+						countdownDate.setMinutes(countdownDate.getMinutes() + minutes);
+						countdownDate.setSeconds(countdownDate.getSeconds() + seconds);
+
+						// Update the countdown every second
+						var countdown = setInterval(function() {
+							// Get the current date and time
+							var now = new Date().getTime();
+
+							// Calculate the time remaining
+							var distance = countdownDate - now;
+
+							// Calculate days, hours, minutes, and seconds
+							var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+							var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+							var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+							var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+							// Display the countdown in the element with id "countdown"
+							document.getElementById("countdown").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+
+							// If the countdown is finished, display a message
+							if (distance < 0) {
+								clearInterval(countdown);
+								<?php ?>
+								document.getElementById("countdown").innerHTML = "Countdown Finished";
+							}
+						}, 1000);
+					</script>
 					<?php
 					if (isset($_GET['note'])) {
 						$note = $_GET['note'];
@@ -76,7 +126,7 @@ $quiz = getQuizById($idQ);
 						// Output each question with choices
 						foreach ($questions as $index => $question) {
 						?>
-							<div class="card">
+							<div class="card mb-3">
 								<div class="card-header"><?php echo $index + 1; ?> : <?php echo $question["title_question"]; ?></div>
 								<div class="card-body">
 									<input type="hidden" name="Question_<?php echo $index; ?>" value="<?php echo $question["id_question"]; ?>">
