@@ -52,7 +52,15 @@ $questions =$resultat->fetchAll();
 //var_dump($questions);
 return $questions;
 }
-//////////////   function for fet quizs from data base    ////////// 
+//////////////   function verified email from data base    //////////
+function emailverified($email){
+  $conn = connect();
+  $requette ="SELECT * FROM users WHERE email='$email'";
+  $resultat =$conn->query($requette);
+  $emailverified=$resultat->fetch();
+  return $emailverified;
+}
+//////////////   function for added user from data base    ////////// 
 function AddUser($data){
   $conn = connect();
   $mphash=md5($data['mp']);

@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['email'])) {
-    header('location:singIn.php');
+    header('location:login.php');
 }
 if ($_SESSION['role_admin']!=1) {
     header('location:profile.php');

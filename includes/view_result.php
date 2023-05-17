@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['email'])) {
-	header('location:singIn.php');
+	header('location:../Layout/login.php');
 }
 $idQ = $_GET['idQ'];
 

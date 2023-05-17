@@ -1,6 +1,8 @@
 <?php
-
 session_start();
+if (!isset($_SESSION['email'])) {
+	header('location:../Layout/login.php');
+}
 include '../includes/ViewAnswersUserFunctions.php';
 $id_User=$_GET['id_user'];
 $id_Quiz = $_GET['id_Quiz'];

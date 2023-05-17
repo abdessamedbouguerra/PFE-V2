@@ -2,7 +2,7 @@
 include '../includes/functions.php';
 session_start();
 if (!isset($_SESSION['email'])) {
-	header('location:singIn.php');
+	header('location:login.php');
 }
 
 $id_User = $_SESSION['id_user'];

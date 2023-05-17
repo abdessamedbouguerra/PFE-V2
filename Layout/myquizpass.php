@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['email'])) {
-    header('location:../singIn.php');
+    header('location:login.php');
 }
 
 include '../includes/functions.php';
