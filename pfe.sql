@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 04, 2023 at 06:53 PM
+-- Generation Time: May 25, 2023 at 12:48 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -8644,7 +8644,68 @@ INSERT INTO `answers_users` (`id_answer_user`, `id_user`, `id_question`, `id_qui
 (8790, 14, 0, 18, NULL, 0, 0),
 (8791, 14, 0, 18, NULL, 0, 0),
 (8792, 14, 0, 18, NULL, 0, 0),
-(8793, 14, 0, 18, NULL, 0, 0);
+(8793, 14, 0, 18, NULL, 0, 0),
+(8794, 14, 43, 14, 88, 2, 0),
+(8795, 14, 44, 14, 88, 0, 0),
+(8796, 14, 45, 14, 88, 111, 0),
+(8797, 14, 46, 14, 88, 2222, 0),
+(8798, 14, 48, 14, 88, 11111, 1),
+(8799, 14, 43, 14, 89, 0, 0),
+(8800, 14, 44, 14, 89, 0, 0),
+(8801, 14, 45, 14, 89, 0, 0),
+(8802, 14, 46, 14, 89, 0, 0),
+(8803, 14, 48, 14, 89, 0, 0),
+(8804, 14, 43, 14, 90, 1, 1),
+(8805, 14, 44, 14, 90, 0, 0),
+(8806, 14, 45, 14, 90, 0, 0),
+(8807, 14, 46, 14, 90, 0, 0),
+(8808, 14, 48, 14, 90, 0, 0),
+(8809, 14, 43, 14, 91, 0, 0),
+(8810, 14, 44, 14, 91, 0, 0),
+(8811, 14, 45, 14, 91, 0, 0),
+(8812, 14, 46, 14, 91, 0, 0),
+(8813, 14, 48, 14, 91, 0, 0),
+(8814, 14, 49, 42, 92, 0, 1),
+(8815, 14, 50, 42, 92, 0, 0),
+(8816, 14, 51, 42, 92, 0, 0),
+(8817, 14, 52, 42, 92, 0, 0),
+(8818, 14, 53, 42, 92, 0, 0);
+INSERT INTO `answers_users` (`id_answer_user`, `id_user`, `id_question`, `id_quiz`, `id_pass_quiz`, `answer`, `answer_case`) VALUES
+(8819, 14, 54, 42, 92, 0, 0),
+(8820, 14, 55, 42, 92, 0, 1),
+(8821, 14, 56, 42, 92, 0, 1),
+(8822, 14, 57, 42, 92, 0, 0),
+(8823, 14, 58, 42, 92, 0, 0),
+(8824, 14, 49, 42, 93, 0, 0),
+(8825, 14, 50, 42, 93, 0, 0),
+(8826, 14, 51, 42, 93, 0, 0),
+(8827, 14, 52, 42, 93, 0, 0),
+(8828, 14, 53, 42, 93, 0, 0),
+(8829, 14, 54, 42, 93, 0, 0),
+(8830, 14, 55, 42, 93, 0, 0),
+(8831, 14, 56, 42, 93, 0, 0),
+(8832, 14, 57, 42, 93, 0, 0),
+(8833, 14, 58, 42, 93, 0, 0),
+(8834, 14, 49, 42, 94, 0, 1),
+(8835, 14, 50, 42, 94, 0, 0),
+(8836, 14, 51, 42, 94, 0, 0),
+(8837, 14, 52, 42, 94, 0, 1),
+(8838, 14, 53, 42, 94, 0, 0),
+(8839, 14, 54, 42, 94, 0, 0),
+(8840, 14, 55, 42, 94, 0, 1),
+(8841, 14, 56, 42, 94, 0, 1),
+(8842, 14, 57, 42, 94, 0, 0),
+(8843, 14, 58, 42, 94, 0, 0),
+(8844, 14, 49, 42, 95, 0, 0),
+(8845, 14, 50, 42, 95, 0, 1),
+(8846, 14, 51, 42, 95, 0, 0),
+(8847, 14, 52, 42, 95, 0, 0),
+(8848, 14, 53, 42, 95, 0, 0),
+(8849, 14, 54, 42, 95, 0, 0),
+(8850, 14, 55, 42, 95, 0, 0),
+(8851, 14, 56, 42, 95, 0, 0),
+(8852, 14, 57, 42, 95, 0, 1),
+(8853, 14, 58, 42, 95, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -8668,7 +8729,15 @@ INSERT INTO `pass_quiz` (`id_pass`, `id_user`, `id_quiz`, `date`, `note`) VALUES
 (84, 14, 14, '2023-05-02', 1),
 (85, 16, 14, '2023-05-02', 1),
 (86, 16, 14, '2023-05-04', 1),
-(87, 16, 14, '2023-05-04', 0);
+(87, 16, 14, '2023-05-04', 0),
+(88, 14, 14, '2023-05-24', 1),
+(89, 14, 14, '2023-05-24', 0),
+(90, 14, 14, '2023-05-24', 1),
+(91, 14, 14, '2023-05-24', 0),
+(92, 14, 42, '2023-05-24', 3),
+(93, 14, 42, '2023-05-24', 0),
+(94, 14, 42, '2023-05-24', 4),
+(95, 14, 42, '2023-05-25', 2);
 
 -- --------------------------------------------------------
 
@@ -8703,7 +8772,17 @@ INSERT INTO `question` (`id_question`, `id_quiz`, `title_question`, `ch1`, `ch2`
 (44, 14, 'question11', '11', '22', '33', '33', '22'),
 (45, 14, 'question111', '111', '222', '333', '444', '333'),
 (46, 14, 'question1111', '1111', '2222', '3333', '3333', '3333'),
-(48, 14, 'question11111', '11111', '22222', '33333', '44444', '11111');
+(48, 14, 'question11111', '11111', '22222', '33333', '44444', '11111'),
+(49, 42, 'Je m’appelle Gian. Et toi, … … tu t’appelles ?﻿', 'comment', 'pourquoi', 'quand', 'quand', 'comment'),
+(50, 42, 'Attention ! La séance de 18 heures pour le film « Folie douce » est… … Il reste des places pour la séance de 20 heures. Merci de votre compréhension.', 'complète.', 'entière.', 'nombreuse', 'nombreuse', 'complète.'),
+(51, 42, 'Avec le programme « Jeunes d’Europe », finissez… … études à l’étranger.', 'leurs', 'mes', 'ses', 'ses', 'vos'),
+(52, 42, 'Venez profiter des promotions ! Cette semaine, trois paquets de café… … le prix de deux !﻿', 'avec', 'par', 'pour', 'pour', 'pour'),
+(53, 42, 'Salut Léa ! On va au cinéma ce soir ? J’attends les résultats de mon examen demain et je me sens vraiment… … J’ai besoin de sortir un peu ! Amélie', 'surprise', 'déçue', 'désolée', 'désolée', 'nerveuse'),
+(54, 42, 'Cet après-midi, aussitôt après les déclarations de la direction à la presse, le syndicat… … son plan d’action que les employés attendent avec impatience.', 'annonçait', 'annonce', 'annoncera', 'annoncera', 'annoncera'),
+(55, 42, 'Une fois votre document sélectionné, vous pouvez… … la clé USB sur le port prévu à cet effet afin d’enregistrer votre document. Aallumer Bcliquer Cinsérer Dtaper', 'allumer', 'cliquer', 'insérer', 'insérer', 'insérer'),
+(56, 42, 'Nous continuons à marcher 2 h chaque jour… … nous sommes âgés maintenant.', 'afin que ', 'bien que ', 'même si ', 'même si ', 'même si '),
+(57, 42, 'Les Français sont de plus en plus fous des tatouages. Hommes, femmes, jeunes ou moins jeunes, toutes les catégories sociales sont concernées par ce phénomène. Les boutiques accueillent une clientèle… … de plus en plus nombreuse.', 'analogue', 'disparate', 'dissemblable ', 'dissemblable ', 'disparate'),
+(58, 42, 'Le nouveau président du parti demande à ses alliés de mettre en… … les querelles intestines, afin de créer une unité nouvelle et mettre fin aux rivalités internes.', 'abyme', 'exergue', 'garde', 'garde', 'sourdine');
 
 -- --------------------------------------------------------
 
@@ -8727,17 +8806,9 @@ CREATE TABLE `quiz` (
 --
 
 INSERT INTO `quiz` (`id_quiz`, `id_user`, `title_quiz`, `situation_quiz`, `url_quiz`, `quiz_duration`, `quiz_description`, `image`) VALUES
-(14, 14, 'test1', 0, 'localhost/testing/PFE_V1/Layout/passQuiz.php?id=14', '00:05:00', 'description1', ''),
-(18, 14, 'test 2', 0, 'localhost/testing/PFE_V1/Layout/passQuiz.php?id=18', '00:06:00', 'description 2', ''),
-(23, 16, 'tett', 0, 'localhost/testing/PFE_V1/Layout/passQuiz.php?id=23', '05:05:00', 'dtt', ''),
-(24, 14, 'test 5', 1, 'localhost/testing/PFE_V1/Layout/passQuiz.php?id=24', '00:05:00', 'description', ''),
-(33, 14, 'test 2', 0, 'localhost/testing/PFE_V1/Layout/passQuiz.php?id=33', '00:13:40', 'dfs', ''),
-(34, 14, 'dfs', 0, 'localhost/testing/PFE_V1/Layout/passQuiz.php?id=34', '00:05:40', 'dsfsd', ''),
-(35, 14, '445', 0, 'localhost/testing/PFE_V1/Layout/passQuiz.php?id=35', '00:05:40', '45', ''),
-(36, 14, 'fgh', 1, 'localhost/testing/PFE_V1/Layout/passQuiz.php?id=36', '00:05:40', 'fgd', ''),
-(37, 14, 'ghdf', 0, 'localhost/testing/PFE_V1/Layout/passQuiz.php?id=37', '00:05:40', 'fdgfd', ''),
-(38, 14, 'jb;jn', 0, 'localhost/testing/PFE_V1/Layout/passQuiz.php?id=38', '00:05:40', 'fdgdf', ''),
-(39, 14, 'df', 1, 'localhost/testing/PFE_V1/Layout/passQuiz.php?id=39', '00:05:40', 'xcv', '');
+(14, 14, 'test1', 0, 'localhost/testing/PFE_V1/Layout/passQuiz.php?id=14', '00:01:00', 'description1', 'quiz1.png'),
+(23, 16, 'tett', 0, 'localhost/testing/PFE_V1/Layout/passQuiz.php?id=23', '05:05:00', 'dtt', 'quiz1.png'),
+(42, 14, 'STRUCTURE DE LA LANGUE', 0, 'localhost/testing/PFE_V1/Layout/passQuiz.php?id=42', '00:05:00', '', 'tcf.png');
 
 -- --------------------------------------------------------
 
@@ -8759,7 +8830,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id_user`, `first_name`, `last_name`, `email`, `mp`, `role_admin`) VALUES
-(14, 'fn_test', 'ln_test', 'test@test', '098f6bcd4621d373cade4e832627b4f6', 0),
+(14, 'abdessamed', 'bouguerra', 'test@test', '098f6bcd4621d373cade4e832627b4f6', 0),
 (15, 'ala', 'ala', 'ala@ala', 'e88e6128e26eeff4daf1f5db07372784', 0),
 (16, 'younes', 'younes', 'younes@younes', '083af24243207a87b587d00e12cc30ca', 0),
 (17, 'admin', 'admin', 'admin@admin', '21232f297a57a5a743894a0e4a801fc3', 1);
@@ -8806,31 +8877,31 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `answers_users`
 --
 ALTER TABLE `answers_users`
-  MODIFY `id_answer_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8794;
+  MODIFY `id_answer_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8854;
 
 --
 -- AUTO_INCREMENT for table `pass_quiz`
 --
 ALTER TABLE `pass_quiz`
-  MODIFY `id_pass` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
+  MODIFY `id_pass` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
 
 --
 -- AUTO_INCREMENT for table `question`
 --
 ALTER TABLE `question`
-  MODIFY `id_question` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id_question` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
 -- AUTO_INCREMENT for table `quiz`
 --
 ALTER TABLE `quiz`
-  MODIFY `id_quiz` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id_quiz` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
