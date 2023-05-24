@@ -145,18 +145,7 @@ $questions = getAllQuestion($id_Quiz);
 	<!-- Graphs -->
 	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.7.1/dist/Chart.min.js"></script>
 
-	<!--  -->
-	<script data-timeout="<?php //echo $timeout; ?>">
-    // Set the session timeout in seconds
-    const timeout = parseInt(document.currentScript.dataset.timeout); // Change this value to set the desired session timeout in seconds
 
-    // Set the session start time
-    
-      //setTimeout(() => {
-      //  window.location.href = 'http://localhost:81/fromgit/PFE_V1/index.php';
-      //}, 5000);
-    
-  </script> 
   
 </body>
 

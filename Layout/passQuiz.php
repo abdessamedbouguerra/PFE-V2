@@ -32,8 +32,8 @@ $quiz = getQuizById($idQ);
 	<meta name="description" content="">
 	<meta name="author" content="">
 	<link rel="icon" href="/docs/4.1/assets/img/favicons/favicon.ico">
-    <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+	<!-- Favicon-->
+	<link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
 	<title>Quizy</title>
 
 	<link rel="canonical" href="https://getbootstrap.com/docs/4.1/examples/dashboard/">
@@ -59,55 +59,13 @@ $quiz = getQuizById($idQ);
 			<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
 				<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
 					<h1 class="h2">Participation in <?php echo $titleQuiz; ?></h1>
-					
+
 					<!-- countdown -->
 					<div class="row">
 						<div class="col-sm-12">
 							<h1 id="countdown"></h1>
 						</div>
 					</div>
-					<!-- countdown scripts -->
-					<script>
-						// Get the time from the PHP variable
-						var timeString = "<?php echo $quiz['quiz_duration']; ?>";
-
-						// Split the time into hours, minutes, and seconds
-						var timeParts = timeString.split(':');
-						var hours = parseInt(timeParts[0]);
-						var minutes = parseInt(timeParts[1]);
-						var seconds = parseInt(timeParts[2]);
-
-						// Set the countdown date by adding the hours, minutes, and seconds to the current date and time
-						var countdownDate = new Date();
-						countdownDate.setHours(countdownDate.getHours() + hours);
-						countdownDate.setMinutes(countdownDate.getMinutes() + minutes);
-						countdownDate.setSeconds(countdownDate.getSeconds() + seconds);
-
-						// Update the countdown every second
-						var countdown = setInterval(function() {
-							// Get the current date and time
-							var now = new Date().getTime();
-
-							// Calculate the time remaining
-							var distance = countdownDate - now;
-
-							// Calculate days, hours, minutes, and seconds
-							var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-							var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-							var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-							var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-							// Display the countdown in the element with id "countdown"
-							document.getElementById("countdown").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
-
-							// If the countdown is finished, display a message
-							if (distance < 0) {
-								clearInterval(countdown);
-								<?php ?>
-								document.getElementById("countdown").innerHTML = "Countdown Finished";
-							}
-						}, 1000);
-					</script>
 					<?php
 					if (isset($_GET['note'])) {
 						$note = $_GET['note'];
@@ -119,7 +77,7 @@ $quiz = getQuizById($idQ);
 					?>
 				</div>
 				<div class="container">
-					<form method="post" action="../includes/passQuizFunction.php">
+					<form id="Quizform" method="post" action="../includes/passQuizFunction.php">
 						<input type="hidden" name="id_User" value="<?php echo $id_User; ?>">
 						<input type="hidden" name="id_Q" value="<?php echo $idQ; ?>">
 						<?php
@@ -186,18 +144,83 @@ $quiz = getQuizById($idQ);
 	</script>
 	<!-- Graphs -->
 	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.7.1/dist/Chart.min.js"></script>
+	<!-- countdown scripts -->
+	<script>
+		// // Get the time from the PHP variable
+		// var timeString = "<?php echo $quiz['quiz_duration']; ?>";
 
-	<!--  -->
-	<script data-timeout="<?php //echo $timeout; 
-							?>">
-		// Set the session timeout in seconds
-		const timeout = parseInt(document.currentScript.dataset.timeout); // Change this value to set the desired session timeout in seconds
+		// // Split the time into hours, minutes, and seconds
+		// var timeParts = timeString.split(':');
+		// var hours = parseInt(timeParts[0]);
+		// var minutes = parseInt(timeParts[1]);
+		// var seconds = parseInt(timeParts[2]);
 
-		// Set the session start time
+		// // Set the countdown date by adding the hours, minutes, and seconds to the current date and time
+		// var countdownDate = new Date();
+		// countdownDate.setHours(countdownDate.getHours() + hours);
+		// countdownDate.setMinutes(countdownDate.getMinutes() + minutes);
+		// countdownDate.setSeconds(countdownDate.getSeconds() + seconds);
 
-		//setTimeout(() => {
-		//  window.location.href = 'http://localhost:81/fromgit/PFE_V1/index.php';
-		//}, 5000);
+		// // Update the countdown every second
+		// var countdown = setInterval(function() {
+		// 	// Get the current date and time
+		// 	var now = new Date().getTime();
+
+		// 	// Calculate the time remaining
+		// 	var distance = countdownDate - now;
+
+		// 	// Calculate days, hours, minutes, and seconds
+		// 	var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+		// 	var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+		// 	var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+		// 	var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+		// 	// Display the countdown in the element with id "countdown"
+		// 	document.getElementById("countdown").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+
+		// 	// If the countdown is finished, display a message
+		// 	if (distance < 0) {
+		// 		clearInterval(countdown);
+		// 		document.getElementById("countdown").innerHTML = "Countdown Finished";
+		// 		document.getElementById('Quizform').submit();
+		// 	}
+		// }, 1000);
+	</script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.16.6/sweetalert2.all.min.js"></script>
+	<script>
+		// const form = document.getElementById('Quizform');
+
+		// form.addEventListener('submit', function(event) {
+		// 	// Prevent the default form submission
+		// 	event.preventDefault();
+
+		// 	// Perform any additional actions or validations
+
+		// 	// Check if the form has been submitted
+		// 	if (form.getAttribute('data-submitted') === 'true') {
+		// 		// Form has already been submitted
+		// 		const hiddenInput = document.createElement('input');
+		// 		hiddenInput.setAttribute('type', 'hidden');
+		// 		hiddenInput.setAttribute('name', 'QuizIsDone');
+		// 		hiddenInput.setAttribute('value', '1');
+
+		// 		// Append the hidden input field to the form
+		// 		form.appendChild(hiddenInput);
+
+		// 		Swal.fire({
+		// 			title: 'Successfully',
+		// 			text: 'The Passing Quiz successfully.',
+		// 			icon: 'success',
+		// 			confirmButtonText: 'OK',
+		// 			confirmButtonColor: '#28282B',
+		// 			timer: 5000
+		// 		}).then(() => {
+		// 			// Further actions after Swal.fire is closed
+		// 		});
+
+		// 		return; // Stop further processing
+		// 	}
+		// });
 	</script>
 
 </body>

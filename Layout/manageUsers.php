@@ -4,7 +4,7 @@ if (!isset($_SESSION['email'])) {
     header('location:login.php');
 }
 if ($_SESSION['role_admin']!=1) {
-    header('location:profile.php');
+    header('location:homePage.php');
 }
 include '../includes/manageUsersFunctions.php';
 AddUserWithadmin($_POST);

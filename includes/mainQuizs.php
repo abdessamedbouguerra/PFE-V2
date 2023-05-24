@@ -85,7 +85,7 @@
                         <td>
                             <a class="btn btn-success" data-toggle="modal" data-target="#editQuiz<?php echo $quiz['id_quiz'] ?>"><span data-feather="edit"></span></a>
                             <a class="btn btn-success" href="../includes/manageQuiz.php?idQ=<?php echo $quiz['id_quiz'] ?>"><span data-feather="sliders"></a>
-                            <a class="btn btn-danger" href="../includes/deleteQuiz.php?idQ=<?php echo $quiz['id_quiz'] ?>"><span data-feather="trash-2"></a>
+                            <a class="btn btn-danger" href="../includes/deleteQuiz.php?idQ=<?php echo $quiz['id_quiz'] ?>" onclick="confirmDeleteQuiz(event)"><span data-feather="trash-2"></a>
                             <a class="btn btn-danger" href="../includes/view_result.php?idQ=<?php echo $quiz['id_quiz'] ?>">View result</a>
                         </td>
                     </tr>

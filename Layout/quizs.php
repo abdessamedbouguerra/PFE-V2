@@ -148,6 +148,7 @@ $quizs = getAllQuizsOfUser($_SESSION['id_user']);
                             </div>
                             <div class="form-group">
                             <input class="choose-file" type="file" name="image_quiz" class="form-control">
+                            <input type="hidden" name="old_img_quiz" value="<?php echo $quiz['image'];?>">
                             </div>
                             <div class="form-check form-switch">
                                 <input class="form-check-input" name="situation_quiz" type="checkbox" role="switch" id="flexSwitchCheckChecked" <?php echo $situation_chack ?> />
@@ -168,7 +169,24 @@ $quizs = getAllQuizsOfUser($_SESSION['id_user']);
     ?>
 
     <!--  -->
-
+<!-- alerts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.16.6/sweetalert2.all.min.js"></script>
+    <script>
+        function confirmDeleteQuiz(event) {
+            event.preventDefault(); // Prevent the default link behavior
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#28282B',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                window.location.href = event.target.href;
+            })
+        }
+    </script>
 </body>
 
 </html>

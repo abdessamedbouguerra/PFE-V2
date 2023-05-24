@@ -16,7 +16,7 @@ if (isset($_POST['situation_quiz'])) {
 }
 
 //upload image quiz
-$img_Quiz = 0;
+$img_Quiz = $_POST['old_img_quiz'];
 $target_dir = "../images/";
 
 if(isset($_FILES["image_quiz"]) && !empty($_FILES["image_quiz"]["tmp_name"])) {

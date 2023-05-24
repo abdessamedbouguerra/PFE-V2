@@ -4,9 +4,15 @@
     session_destroy();
     header('location:../Layout/login.php?role=blocked');
 }?>
-<nav class="col-md-2 d-none d-md-block bg-light sidebar">
+<nav class="col-md-2 mt-2 d-none d-md-block bg-light sidebar">
                 <div class="sidebar-sticky">
                     <ul class="nav flex-column">
+                    <li class="nav-item">
+                            <a class="nav-link <?php echo ($activeMarke == 'home') ? 'active' : ''; ?>" href="../Layout/homePage.php">
+                                <span data-feather="home"></span>
+                                Home 
+                            </a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link <?php echo ($activeMarke == 'profile') ? 'active' : ''; ?>" href="../Layout/profile.php">
                                 <span data-feather="user"></span>
@@ -21,13 +27,13 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link <?php echo ($activeMarke == 'passagequiz') ? 'active' : ''; ?>" href="../Layout/passageQuiz.php">
-                                <span data-feather="shopping-cart"></span>
+                                <span data-feather="file-minus"></span>
                                 Passage Quiz
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link <?php echo ($activeMarke == 'mypassage') ? 'active' : ''; ?>" href="../Layout/myquizpass.php">
-                                <span data-feather="users"></span>
+                                <span data-feather="file-text"></span>
                                 My passage
                             </a>
                         </li>
