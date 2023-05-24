@@ -183,19 +183,19 @@ $titleQ = getTitleQuiz($idQ);
                     <form action="../includes/addquestion.php" method="post">
                         <input type="hidden" name="idQ" value="<?php echo  $idQ ?>">
                         <div class="form-group">
-                            <input type="text" name="title_question" class="form-control" placeholder="Title of a question.">
+                            <input type="text" name="title_question" class="form-control" placeholder="Title of a question." required >
                         </div>
                         <div class="form-group">
-                            <input type="text" name="ch1" class="form-control" placeholder="choice 1.">
+                            <input type="text" name="ch1" class="form-control" placeholder="choice 1." required >
                         </div>
                         <div class="form-group">
-                            <input type="text" name="ch2" class="form-control" placeholder="choice 2.">
+                            <input type="text" name="ch2" class="form-control" placeholder="choice 2." required >
                         </div>
                         <div class="form-group">
-                            <input type="text" name="ch3" class="form-control" placeholder="choice 3.">
+                            <input type="text" name="ch3" class="form-control" placeholder="choice 3." required >
                         </div>
                         <div class="form-group">
-                            <input type="text" name="ch4" class="form-control" placeholder="choice 4.">
+                            <input type="text" name="ch4" class="form-control" placeholder="choice 4." required >
                         </div>
                         <div>
                             <select name="answer" class="form-select form-control form-select-lg mb-3" aria-label=".form-select-lg example">

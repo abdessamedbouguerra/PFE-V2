@@ -52,22 +52,22 @@ if (!empty($_POST)) {
 
                     <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Create your account</h5>
                     <div class="form-outline mb-4">
-                      <input name="fname" type="text" id="fname" class="form-control form-control-lg" />
+                      <input name="fname" type="text" id="fname" class="form-control form-control-lg" required />
                       <label class="form-label" for="fname">First Name</label>
                     </div>
 
                     <div class="form-outline mb-4">
-                      <input name="lname" type="text" id="lname" class="form-control form-control-lg" />
+                      <input name="lname" type="text" id="lname" class="form-control form-control-lg" required />
                       <label class="form-label" for="lname">Last Name</label>
                     </div>
 
                     <div class="form-outline mb-4">
-                      <input name="email" type="email" id="email" class="form-control form-control-lg" />
+                      <input name="email" type="email" id="email" class="form-control form-control-lg" required />
                       <label class="form-label" for="email">Email address</label>
                     </div>
 
                     <div class="form-outline mb-4">
-                      <input name="mp" type="password" id="mp" class="form-control form-control-lg" />
+                      <input name="mp" type="password" id="mp" class="form-control form-control-lg" required />
                       <label class="form-label" for="mp">Password</label>
                     </div>
 

@@ -138,13 +138,13 @@ $quizs = getAllQuizsOfUser($_SESSION['id_user']);
                         <form action="../includes/editQuiz.php" method="post" enctype="multipart/form-data">
                             <input type="hidden" name="idQ" value="<?php echo $quiz['id_quiz'] ?>">
                             <div class="form-group">
-                                <input type="text" name="title_quiz" class="form-control" value="<?php echo $quiz['title_quiz']; ?>" placeholder="Title of a quiz.">
+                                <input type="text" name="title_quiz" class="form-control" value="<?php echo $quiz['title_quiz']; ?>" placeholder="Title of a quiz." required >
                             </div>
                             <div class="form-group">
-                                <textarea name="desription_quiz" class="form-control" placeholder="Desription of a quiz."><?php echo $quiz['quiz_description']; ?></textarea>
+                                <textarea name="desription_quiz" class="form-control" placeholder="Desription of a quiz." required ><?php echo $quiz['quiz_description']; ?></textarea>
                             </div>
                             <div class="form-group">
-                                <input type="time" name="quiz_duration" class="form-control" value="<?php echo $quiz['quiz_duration']; ?>" placeholder="time">
+                                <input type="time" name="quiz_duration" class="form-control" value="<?php echo $quiz['quiz_duration']; ?>" placeholder="time" required >
                             </div>
                             <div class="form-group">
                             <input class="choose-file" type="file" name="image_quiz" class="form-control">
