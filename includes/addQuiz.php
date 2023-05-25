@@ -6,7 +6,7 @@ include 'functions.php';
 
 //Assign the values received by POST method to variables
 $title_quiz=$_POST['title_quiz'];
-$desription_quiz=$_POST['desription_quiz'];
+$description_quiz=$_POST['desription_quiz'];
 $quiz_duration=$_POST['quiz_duration'];
 $situation_quiz=$_POST['situation_quiz'];
 if ($situation_quiz == true) {
@@ -17,18 +17,21 @@ if ($situation_quiz == true) {
 //upload image quiz
 $img_Quiz = 0;
 $target_dir = "../images/";
-$target_file = $target_dir . basename($_FILES["image_quiz"]["name"]);
 
-// Check if the file is a valid image
-$check = getimagesize($_FILES["image_quiz"]["tmp_name"]);
-if($check === false) {
-    echo "Sorry, the file is not an image.";
-} else {
-    // Check if the file was uploaded successfully
-    if (move_uploaded_file($_FILES["image_quiz"]["tmp_name"], $target_file)) {
-        $img_Quiz = $_FILES["image_quiz"]["name"];
+if(isset($_FILES["image_quiz"]) && !empty($_FILES["image_quiz"]["tmp_name"])) {
+    $target_file = $target_dir . basename($_FILES["image_quiz"]["name"]);
+    
+    // Check if the file is a valid image
+    $check = getimagesize($_FILES["image_quiz"]["tmp_name"]);
+    if($check === false) {
+        echo "Sorry, the file is not an image.";
     } else {
-        echo "Sorry, there was an error uploading your file.";
+        // Check if the file was uploaded successfully
+        if (move_uploaded_file($_FILES["image_quiz"]["tmp_name"], $target_file)) {
+            $img_Quiz = $_FILES["image_quiz"]["name"];
+        } else {
+            echo "Sorry, there was an error uploading your file.";
+        }
     }
 }
 

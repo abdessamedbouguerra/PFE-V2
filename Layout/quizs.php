@@ -85,16 +85,16 @@ $quizs = getAllQuizsOfUser($_SESSION['id_user']);
                 <div class="modal-body">
                     <form action="../includes/addQuiz.php" method="post" enctype="multipart/form-data">
                         <div class="form-group">
-                            <input type="text" name="title_quiz" class="form-control" placeholder="Title of a quiz.">
+                            <input type="text" name="title_quiz" class="form-control" placeholder="Title of a quiz." required>
                         </div>
                         <div class="form-group">
-                            <textarea name="desription_quiz" class="form-control" placeholder="Desription of a quiz."></textarea>
+                            <textarea name="desription_quiz" class="form-control" placeholder="Desription of a quiz." required></textarea>
                         </div>
                         <!-- <div class="form-group">
                             <input name="quiz_duration" type="text" class="form-control timepicker" id="timepicker" placeholder="Select a time">
                         </div> -->
                         <div class="form-group">
-                                <input type="time" name="quiz_duration" class="form-control" value="<?php echo '00:00:00'; ?>" placeholder="time">
+                                <input type="time" name="quiz_duration" class="form-control" value="<?php echo '00:00:00'; ?>" placeholder="time" required>
                             </div>
                         <div class="form-group">
                             <input class="choose-file" type="file" name="image_quiz" class="form-control">

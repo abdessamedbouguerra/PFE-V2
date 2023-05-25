@@ -54,21 +54,21 @@ $titleQ = getTitleQuiz($idQ);
 
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
 
-                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h1 class="h2"><?php echo  $titleQ ?></h1>
-                    <!-- url -->
-                    <div class="input-group ">
-                                <input class="form-control mr-1" id="url" type="text" value="<?php echo $urlQ ?>">
-                                <button onclick="copyContent('url')" class="btn btn-sm btn-success">
-                                <span data-feather="clipboard"></span>
-                                </button>
-                            </div>
-                    <!-- add question -->
-                    <div>
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2"><?php echo $titleQ ?></h1>
+    <!-- url -->
+    <div class="input-group" style="width: fit-content;">
+        <input class="form-control mr-1" id="url" type="text" value="<?php echo $urlQ ?>">
+        <button onclick="copyContent('url')" class="btn btn-sm btn-success">
+            <span data-feather="clipboard"></span>
+        </button>
+    </div>
+    <!-- add question -->
+    <div>
+        <a class="btn btn-primary" data-toggle="modal" data-target="#addQuestion">Add question</a>
+    </div>
+</div>
 
-                        <a class="btn btn-primary" data-toggle="modal" data-target="#addQuestion">Add question</a>
-                    </div>
-                </div>
 
                 <!-- alerts -->
                 <div>
@@ -249,32 +249,14 @@ $titleQ = getTitleQuiz($idQ);
                             <input type="text" name="ch3" class="form-control" value="<?php echo $question['ch3'];?>" placeholder="choice 3.">
                         </div>
                         <div class="form-group">
-                            <input type="text" name="ch4" class="form-control" value="<?php echo $question['ch3'];?>" placeholder="choice 4.">
+                            <input type="text" name="ch4" class="form-control" value="<?php echo $question['ch4'];?>" placeholder="choice 4.">
                         </div>
                         <div>
-                            <?php 
-                            $selected1='';
-                            $selected2='';
-                            $selected3='';
-                            $selected4='';
-                            if ($question['answer'] == $question['ch1']) {
-                                $selected1='selected';
-                            } 
-                            if ($question['answer'] == $question['ch2']) {
-                                $selected2='selected';
-                            } 
-                            if ($question['answer'] == $question['ch3']) {
-                                $selected3='selected';
-                            } 
-                            if ($question['answer'] == $question['ch4']) {
-                                $selected4='selected';
-                            } 
-                            ?>
                             <select name="answer" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                                <option <?php echo $selected1;?> value="<?php echo $question['ch1'];?>">choice 1</option>
-                                <option <?php echo $selected2;?> value="<?php echo $question['ch2'];?>">choice 2</option>
-                                <option <?php echo $selected3;?> value="<?php echo $question['ch3'];?>">choice 3</option>
-                                <option <?php echo $selected4;?> value="<?php echo $question['ch4'];?>">choice 4</option>
+                                <option <?php echo ($question['answer'] == $question['ch1']) ? 'selected' : ''; ?> value="<?php echo $question['ch1'];?>">choice 1</option>
+                                <option <?php echo ($question['answer'] == $question['ch2']) ? 'selected' : ''; ?> value="<?php echo $question['ch2'];?>">choice 2</option>
+                                <option <?php echo ($question['answer'] == $question['ch3']) ? 'selected' : ''; ?> value="<?php echo $question['ch3'];?>">choice 3</option>
+                                <option <?php echo ($question['answer'] == $question['ch4']) ? 'selected' : ''; ?> value="<?php echo $question['ch4'];?>">choice 4</option>
                             </select>
                         </div>
                         <div class="modal-footer">
