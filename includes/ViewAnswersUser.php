@@ -9,6 +9,8 @@ $id_Quiz = $_GET['id_Quiz'];
 $id_passQuiz=$_GET['id_passQuiz'];
 $titleQuiz = getTitleQuiz($id_Quiz);
 $questions = getAllQuestion($id_Quiz);
+$selectedAnswer=getAnswersSlected($question["id_question"],$id_User,$id_Quiz,$id_passQuiz);
+$answerCase =getCaseAnswersSlected($question["id_question"],$id_User,$id_Quiz,$id_passQuiz);
 ?>
 
 
@@ -55,13 +57,9 @@ $questions = getAllQuestion($id_Quiz);
 					// Output each question with choices
 					foreach ($questions as $index => $question) {
 					?>
-						<div class="card">
-							<div class="card-header"><?php echo $index+1 ; ?>:<?php echo $question["title_question"];?></div>
+						<div class="card mb-3">
+							<div class="card-header font-weight-bold"><?php echo $index+1 ; ?> : <?php echo $question["title_question"];?></div>
 							<div class="card-body">
-								<?php 
-								$selectedAnswer=getAnswersSlected($question["id_question"],$id_User,$id_Quiz,$id_passQuiz);
-								$answerCase =getCaseAnswersSlected($question["id_question"],$id_User,$id_Quiz,$id_passQuiz);
-								?>
 								<div class="form-group">
 									<div class="form-check" <?php if ($question["ch1"] == $selectedAnswer) {			
 															  if ($answerCase) {
