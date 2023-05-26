@@ -79,7 +79,7 @@ $titleQ = getTitleQuiz($idQ);
                                 <td><?php echo $passageQuiz['date'] ?></td>
 								<td><?php echo $passageQuiz['note'] ?></td>
                                 <td>
-                                    <a class="btn btn-danger" href="../includes/ViewAnswersUser.php?id_Quiz=<?php echo$idQ?>&id_user=<?php echo$passageQuiz['id_user']?>&id_passQuiz=<?php echo$passageQuiz['id_pass']?>&activeMarke=quizs">view answers</a>
+                                    <a class="btn btn-danger text-white" style="background-color: #28282B; border-color: #28282B; " href="../includes/ViewAnswersUser.php?id_Quiz=<?php echo$idQ?>&id_user=<?php echo$passageQuiz['id_user']?>&id_passQuiz=<?php echo$passageQuiz['id_pass']?>&activeMarke=quizs"><span class="text-white" data-feather="file-text"></span>view answers</a>
                                 </td>
                               </tr>
                               <?php

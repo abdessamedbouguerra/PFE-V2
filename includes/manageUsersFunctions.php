@@ -33,9 +33,9 @@ if (isset($_POST[''])) {
     $id_user;
 }
 ///////////////////// remove user with admin  ////////////////////////
-if (isset($_GET['Delete_User'])) {
+if (isset($_POST['Delete_User'])) {
     $conn = connect();
-    $id_user = $_GET['Delete_User'];
+    $id_user = $_POST['Delete_User'];
     $requette = "DELETE FROM users WHERE id_user=$id_user";
     $resultat = $conn->query($requette);
     if ($resultat) {

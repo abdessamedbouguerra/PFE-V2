@@ -6,7 +6,7 @@ include 'functions.php';
 $conn = connect();
 
 //getting the id of the question from the url parameters
-$id_Question = $_GET['id_Question'];
+$id_Question = $_POST['id_Question'];
 $id_Q = getIdQuiz($id_Question);
 
 //creating a query to delete a specific question from the question table in the database based on its id and storing it in the $requete variable.

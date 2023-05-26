@@ -65,7 +65,7 @@ $titleQ = getTitleQuiz($idQ);
     </div>
     <!-- add question -->
     <div>
-        <a class="btn btn-primary" data-toggle="modal" data-target="#addQuestion">Add question</a>
+        <a class="btn btn-danger text-white" style="background-color: #28282B; border-color: #28282B; " data-toggle="modal" data-target="#addQuestion"><span class="text-white" data-feather="plus-square"></span>Add question</a>
     </div>
 </div>
 
@@ -133,8 +133,8 @@ $titleQ = getTitleQuiz($idQ);
                 <td><?php echo $question['ch4'] ?></td>
                 <td><?php echo $question['answer'] ?></td>
                 <td>
-                    <a class="btn btn-success" data-toggle="modal" data-target="#editQuestion<?php echo $question['id_question']?>"><span data-feather="edit"></a>
-                    <a class="btn btn-danger" href="deleteQuestion.php?id_Question=<?php echo $question['id_question']?>"><span data-feather="trash-2"></a>
+                    <a class="btn btn-danger" style="background-color: #28282B; border-color: #28282B; " data-toggle="modal" data-target="#editQuestion<?php echo $question['id_question']?>"><span class="text-white" data-feather="edit"></a>
+                    <a class="btn btn-danger" data-toggle="modal" data-target="#remove_question<?php echo $question['id_question'] ?>"><span class="text-white" data-feather="trash-2"></a>
                 </td>
               </tr>
                        <?php
@@ -207,7 +207,7 @@ $titleQ = getTitleQuiz($idQ);
                         </div>
                         <div class="modal-footer">
 
-                            <button type="submit" class="btn btn-primary">Save</button>
+                            <button type="submit" class="btn btn-danger" style="background-color: #28282B; border-color: #28282B; ">Save</button>
                         </div>
 
                     </form>
@@ -261,7 +261,7 @@ $titleQ = getTitleQuiz($idQ);
                         </div>
                         <div class="modal-footer">
 
-                            <button type="submit" class="btn btn-primary">Save</button>
+                            <button type="submit" class="btn btn-danger" style="background-color: #28282B; border-color: #28282B; ">Save</button>
                         </div>
 
                     </form>
@@ -272,8 +272,37 @@ $titleQ = getTitleQuiz($idQ);
     <?php  }
 
 ?>
+<!-- Modal remove_question -->
+<?php
+    foreach ($questions as $index => $question) { 
+    ?>
+        <div class="modal fade" id="remove_question<?php echo $question['id_question'] ?>" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header text-center">
+                        <h3 class="modal-title mx-auto font-weight-bold">Warning!</h3>
+                        
+                    </div>
 
-    <!--  -->
+                    <div class="modal-body text-center">
+                        <form action="deleteQuestion.php" method="post">
+                            <input name="id_Question" type="hidden" class="form-control" id="idQuestion" value="<?php echo $question['id_question'] ?>">
+                            <div class="form-group">
+                                <h3>Do you really want to delete the Question?</h3>
+                            </div>
+                            <div class="modal-footer justify-content-center">
+                                <button type="submit" class="btn btn-danger text-white" style="background-color: #28282B; border-color: #28282B;">YES</button>
+                                <button type="button" class="btn btn-close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">Cancel</span></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    <?php }
+    ?>
 
 </body>
 

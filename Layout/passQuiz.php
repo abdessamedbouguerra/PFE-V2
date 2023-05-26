@@ -62,7 +62,7 @@ $quiz = getQuizById($idQ);
 
 					<!-- countdown -->
 					<div class="row">
-						<div class="col-sm-12">
+						<div class="col-sm-12 text-white m-2 rounded" style="background-color: #28282B; border-color: #28282B;">
 							<h1 id="countdown"></h1>
 						</div>
 					</div>
@@ -85,7 +85,7 @@ $quiz = getQuizById($idQ);
 						foreach ($questions as $index => $question) {
 						?>
 							<div class="card mb-3">
-								<div class="card-header"><?php echo $index + 1; ?> : <?php echo $question["title_question"]; ?></div>
+								<div class="card-header  font-weight-bold"><?php echo $index + 1; ?> : <?php echo $question["title_question"]; ?></div>
 								<div class="card-body">
 									<input type="hidden" name="Question_<?php echo $index; ?>" value="<?php echo $question["id_question"]; ?>">
 									<div class="form-group">
@@ -120,7 +120,7 @@ $quiz = getQuizById($idQ);
 						}
 						?>
 						<input type="hidden" name="number_question" value="<?php echo $index + 1; ?>">
-						<button type="submit" class="btn btn-primary">Submit</button>
+						<button type="submit" class="btn btn-danger" style="background-color: #28282B; border-color: #28282B; ">Terminate</button>
 					</form>
 				</div>
 

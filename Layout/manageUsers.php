@@ -3,11 +3,12 @@ session_start();
 if (!isset($_SESSION['email'])) {
     header('location:login.php');
 }
-if ($_SESSION['role_admin']!=1) {
+if ($_SESSION['role_admin'] != 1) {
     header('location:homePage.php');
 }
 include '../includes/manageUsersFunctions.php';
 AddUserWithadmin($_POST);
+$Users = getAllUsers();
 ?>
 
 
@@ -52,7 +53,7 @@ AddUserWithadmin($_POST);
                     <!-- add user -->
                     <div>
 
-                        <a class="btn btn-primary" data-toggle="modal" data-target="#add_User">Add an User</a>
+                        <a class="btn btn-danger text-white" style="background-color: #28282B; border-color: #28282B; " data-toggle="modal" data-target="#add_User"><span class="text-white" data-feather="user-plus"></span>Add an User</a>
                     </div>
                 </div>
                 <!-- alerts -->
@@ -78,8 +79,8 @@ AddUserWithadmin($_POST);
                 </div>
                 <!-- list user -->
                 <div>
-                    <table class="table">
-                        <thead>
+                    <table class="table table-borderless">
+                        <thead class="table-dark ">
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">First Name</th>
@@ -91,28 +92,27 @@ AddUserWithadmin($_POST);
                         <tbody>
                             <?php
                             $i = 0;
-                            $Users=getAllUsers();
                             foreach ($Users as $User) {
                                 $i++; ?>
-                                
-                          <tr>
-                            <th scope="row"><?php echo $i ?></th>
-                            <td><?php echo $User['first_name'] ?></td>
-                            <td><?php echo $User['last_name'] ?></td>
-                            <td><?php echo $User['email'] ?></td>
-                            <td>
-                                <?php if ($User['role_admin']==0) {?>
-                                    <a class="btn btn-danger" href="../includes/manageUsersFunctions.php?BlockUser=<?php echo $User['id_user'] ?>">Block</a>
-                               <?php } else {?>
-                                <a class="btn btn-success" href="../includes/manageUsersFunctions.php?UNBlockUser=<?php echo $User['id_user'] ?>">UNBlock</a>
-                               <?php }
-                                ?>
-                               
-                                <a class="btn btn-danger" href="../includes/manageUsersFunctions.php?Delete_User=<?php echo $User['id_user'] ?>">Delete</a>
-                            </td>
-                          </tr>
-                                   
-                           <?php }
+
+                                <tr>
+                                    <th scope="row"><?php echo $i ?></th>
+                                    <td><?php echo $User['first_name'] ?></td>
+                                    <td><?php echo $User['last_name'] ?></td>
+                                    <td><?php echo $User['email'] ?></td>
+                                    <td>
+                                        <?php if ($User['role_admin'] == 0) { ?>
+                                            <a class="btn btn-danger" href="../includes/manageUsersFunctions.php?BlockUser=<?php echo $User['id_user'] ?>"><span class="text-white" data-feather="user-minus"></a>
+                                        <?php } else { ?>
+                                            <a class="btn btn-success" href="../includes/manageUsersFunctions.php?UNBlockUser=<?php echo $User['id_user'] ?>"><span class="text-white" data-feather="user-check"></a>
+                                        <?php }
+                                        ?>
+
+                                        <a class="btn btn-danger" data-toggle="modal" data-target="#remove_User<?php echo $User['id_user'] ?>"><span class="text-white" data-feather="user-x"></a>
+                                    </td>
+                                </tr>
+
+                            <?php }
                             ?>
                         </tbody>
                     </table>
@@ -153,25 +153,24 @@ AddUserWithadmin($_POST);
                 <div class="modal-body">
                     <form action="manageUsers.php" method="post" enctype="multipart/form-data">
                         <div class="form-group">
-                            <label for="fname" class="form-label">First Name</label>
+                            <label for="fname" class="form-label  font-weight-bold">First Name</label>
                             <input name="fname" type="text" class="form-control" id="fname">
                         </div>
                         <div class="form-group">
-                            <label for="lname" class="form-label">Last Name</label>
+                            <label for="lname" class="form-label font-weight-bold">Last Name</label>
                             <input name="lname" type="text" class="form-control" id="lname">
                         </div>
                         <div class="form-group">
-                            <label for="email" class="form-label">Email address</label>
-                            <input name="email" type="email" class="form-control" id="email" aria-describedby="emailHelp">
-                            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                            <label for="email" class="form-label font-weight-bold">Email address</label>
+                            <input name="email" type="email" class="form-control" id="email">
                         </div>
                         <div class="form-group">
-                            <label for="mp" class="form-label">Password</label>
+                            <label for="mp" class="form-label font-weight-bold">Password</label>
                             <input name="mp" type="password" class="form-control" id="mp">
                         </div>
                         <div class="modal-footer">
 
-                            <button type="submit" class="btn btn-primary">Save</button>
+                            <button type="submit" class="btn btn-danger text-white" style="background-color: #28282B; border-color: #28282B; ">Save</button>
                         </div>
 
                     </form>
@@ -179,6 +178,37 @@ AddUserWithadmin($_POST);
             </div>
         </div>
     </div>
+    <!-- Modal remove_user -->
+    <?php
+    foreach ($Users as $User) {
+    ?>
+        <div class="modal fade" id="remove_User<?php echo $User['id_user'] ?>" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header text-center">
+                        <h3 class="modal-title mx-auto font-weight-bold">Warning!</h3>
+                        
+                    </div>
+
+                    <div class="modal-body text-center">
+                        <form action="../includes/manageUsersFunctions.php" method="post">
+                            <input name="Delete_User" type="hidden" class="form-control" id="idUser" value="<?php echo $User['id_user'] ?>">
+                            <div class="form-group">
+                                <h3>Do you really want to delete the user?</h3>
+                            </div>
+                            <div class="modal-footer justify-content-center">
+                                <button type="submit" class="btn btn-danger text-white" style="background-color: #28282B; border-color: #28282B;">YES</button>
+                                <button type="button" class="btn btn-close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">Cancel</span></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    <?php }
+    ?>
 
 </body>
 

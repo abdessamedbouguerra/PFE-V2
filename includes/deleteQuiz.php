@@ -1,13 +1,12 @@
-<?php 
+<?php
 include 'functions.php';
 $conn = connect();
-$idQ=$_GET['idQ'];
-$requette ="DELETE FROM quiz WHERE id_quiz='$idQ'";
-  $resultat =$conn->query($requette);
-  if ($resultat) {
-    header('location:../Layout/quizs.php?delete=ok');   //redirect to quiz page
-  }
- else {
-  header('location:../Layout/logOut.php');   
+$idQ = $_POST['idQuiz'];
+$requette = "DELETE FROM quiz WHERE id_quiz='$idQ'";
+$resultat = $conn->query($requette);
+if ($resultat) {
+    header('location:../Layout/quizs.php?delete=ok'); // Redirect to quiz page after successful deletion
+} else {
+    header('location:../Layout/logOut.php'); // Redirect to logout page in case of error
 }
 ?>

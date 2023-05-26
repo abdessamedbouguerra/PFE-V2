@@ -105,7 +105,7 @@ $quizs = getAllQuizsOfUser($_SESSION['id_user']);
                         </div>
                         <div class="modal-footer">
 
-                            <button type="submit" class="btn btn-primary">Save</button>
+                            <button type="submit" class="btn btn-danger" style="background-color: #28282B; border-color: #28282B; ">Save</button>
                         </div>
 
                     </form>
@@ -156,7 +156,7 @@ $quizs = getAllQuizsOfUser($_SESSION['id_user']);
                             </div>
                             <div class="modal-footer">
 
-                                <button type="submit" class="btn btn-primary">Edit</button>
+                                <button type="submit" class="btn btn-danger" style="background-color: #28282B; border-color: #28282B; ">Edit</button>
                             </div>
 
                         </form>
@@ -169,24 +169,39 @@ $quizs = getAllQuizsOfUser($_SESSION['id_user']);
     ?>
 
     <!--  -->
-<!-- alerts -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.16.6/sweetalert2.all.min.js"></script>
-    <script>
-        function confirmDeleteQuiz(event) {
-            event.preventDefault(); // Prevent the default link behavior
-            Swal.fire({
-                title: 'Are you sure?',
-                text: "You won't be able to revert this!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#d33',
-                cancelButtonColor: '#28282B',
-                confirmButtonText: 'Yes, delete it!'
-            }).then((result) => {
-                window.location.href = event.target.href;
-            })
-        }
-    </script>
+    <!-- Modal remove_quiz -->
+    <?php
+    foreach ($quizs as $quiz) { 
+    ?>
+        <div class="modal fade" id="remove_quiz<?php echo $quiz['id_quiz'] ?>" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header text-center">
+                        <h3 class="modal-title mx-auto font-weight-bold">Warning!</h3>
+                        
+                    </div>
+
+                    <div class="modal-body text-center">
+                        <form action="../includes/deleteQuiz.php" method="post">
+                            <input name="idQuiz" type="hidden" class="form-control" id="idQuiz" value="<?php echo $quiz['id_quiz'] ?>">
+                            <div class="form-group">
+                                <h3>Do you really want to delete the Quiz?</h3>
+                            </div>
+                            <div class="modal-footer justify-content-center">
+                                <button type="submit" class="btn btn-danger text-white" style="background-color: #28282B; border-color: #28282B;">YES</button>
+                                <button type="button" class="btn btn-close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">Cancel</span></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    <?php }
+    ?>
+
+
 </body>
 
 </html>

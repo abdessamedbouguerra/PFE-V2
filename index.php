@@ -38,7 +38,22 @@ $quizs = getAllQuizsPublic();
                     <li class="nav-item"><a class="nav-link" href="#portfolio">Quizzes</a></li>
                     <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="#team">Team</a></li>
-                    <li class="nav-item"><a class="nav-link"  href="Layout/login.php">Login</a></li>
+                    <?php
+                    if (!isset($_SESSION['email'])) {
+                    ?>
+                        <li class="nav-item"><a class="nav-link" href="Layout/login.php">Login & sign Up</a></li>
+                    <?php
+                    }
+                    else
+                    {
+                    ?>
+                    <li class="nav-item"><a class="nav-link" href="Layout/homePage.php">dashboard</a></li>
+                    <?php
+                    
+                }
+                    ?>
+
+                    
                 </ul>
             </div>
         </div>
@@ -46,7 +61,7 @@ $quizs = getAllQuizsPublic();
     <!-- Masthead-->
     <header class="masthead">
         <div class="container">
-            <div class="masthead-subheading">Welcome To Our Studio!</div>
+            <div class="masthead-subheading">Welcome To Quizy!</div>
             <div class="masthead-heading text-uppercase">It's Nice To Meet You</div>
             <a class="btn btn-primary btn-xl text-uppercase" href="#services">Tell Me More</a>
         </div>
@@ -59,29 +74,22 @@ $quizs = getAllQuizsPublic();
                 <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
             </div>
             <div class="row text-center">
-                <div class="col-md-4">
-                    <span class="fa-stack fa-4x">
-                        <i class="fas fa-circle fa-stack-2x text-primary"></i>
-                        <i class="fas fa-shopping-cart fa-stack-1x fa-inverse"></i>
-                    </span>
-                    <h4 class="my-3">E-Commerce</h4>
-                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
-                </div>
-                <div class="col-md-4">
+
+                <div class="col-md-6">
                     <span class="fa-stack fa-4x">
                         <i class="fas fa-circle fa-stack-2x text-primary"></i>
                         <i class="fas fa-laptop fa-stack-1x fa-inverse"></i>
                     </span>
-                    <h4 class="my-3">Responsive Design</h4>
-                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+                    <h4 class="my-3">Public Quizzes</h4>
+                    <p class="text-muted">You can create or enter Public quizzes..</p>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <span class="fa-stack fa-4x">
                         <i class="fas fa-circle fa-stack-2x text-primary"></i>
                         <i class="fas fa-lock fa-stack-1x fa-inverse"></i>
                     </span>
-                    <h4 class="my-3">Web Security</h4>
-                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+                    <h4 class="my-3">Private Quizzes</h4>
+                    <p class="text-muted">You can create or enter private quizzes.</p>
                 </div>
             </div>
         </div>
@@ -122,69 +130,37 @@ $quizs = getAllQuizsPublic();
         <div class="container">
             <div class="text-center">
                 <h2 class="section-heading text-uppercase">About</h2>
-                <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                <div class="jumbotron p-3 p-md-5 text-white rounded bg-dark">
+
+
+                    <div class="row g-0">
+
+                        <div class="col-md-6 col-lg-7 d-flex align-items-center">
+                            <div class="card-body p-4 p-lg-5 text-black">
+                                <p class="lead my-3 text-white">Are you ready to put your reading comprehension skills to the test? Look no further! Our website offers a unique and engaging platform for passage quizzes that will challenge and entertain you.
+
+                                    Whether you're a student looking to improve your reading abilities or an avid reader seeking a fun way to explore new literary works, our online passage quizzes are designed to captivate and educate. We have carefully curated a diverse selection of passages from various genres, including fiction, non-fiction, poetry, and more.
+
+                                    Here's how it works: Simply choose a quiz from our extensive collection and immerse yourself in a carefully selected passage. As you read through the text, you'll encounter thought-provoking questions that will challenge your understanding and interpretation of the material. Sharpen your analytical thinking and uncover hidden meanings as you strive to answer each question correctly.
+
+                                    Our quizzes cater to individuals of all skill levels, from beginners to advanced readers. With each quiz, you'll not only test your comprehension skills but also expand your literary knowledge and vocabulary. As you progress, you'll unlock new passages and gain insights into the nuances of different writing styles and genres.
+
+                                    Join our vibrant community of passionate readers and embark on an intellectual journey through the captivating world of literature. Challenge yourself, learn, and have fun all at once! Engage in friendly competition by comparing your scores with friends or other participants, and strive for the top spot on our leaderboard.
+
+                                    Ready to begin? Dive into our collection of passage quizzes and discover the joy of reading while putting your comprehension skills to the test. Start exploring now and unlock a world of knowledge, imagination, and entertainment!
+
+                                    Welcome to a new chapter of interactive learning. Enjoy the adventure!</p>
+
+
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-5 d-none d-md-flex align-items-center justify-content-center">
+                            <img src="assets/img/Login_SignUp/ImgLog.png" alt="login form" class="img-fluid" style="border-radius: 1rem 0 0 1rem;" />
+                        </div>
+                    </div>
+
+                </div>
             </div>
-            <ul class="timeline">
-                <li>
-                    <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/1.jpg" alt="..." /></div>
-                    <div class="timeline-panel">
-                        <div class="timeline-heading">
-                            <h4>2009-2011</h4>
-                            <h4 class="subheading">Our Humble Beginnings</h4>
-                        </div>
-                        <div class="timeline-body">
-                            <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
-                        </div>
-                    </div>
-                </li>
-                <li class="timeline-inverted">
-                    <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/2.jpg" alt="..." /></div>
-                    <div class="timeline-panel">
-                        <div class="timeline-heading">
-                            <h4>March 2011</h4>
-                            <h4 class="subheading">An Agency is Born</h4>
-                        </div>
-                        <div class="timeline-body">
-                            <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/3.jpg" alt="..." /></div>
-                    <div class="timeline-panel">
-                        <div class="timeline-heading">
-                            <h4>December 2015</h4>
-                            <h4 class="subheading">Transition to Full Service</h4>
-                        </div>
-                        <div class="timeline-body">
-                            <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
-                        </div>
-                    </div>
-                </li>
-                <li class="timeline-inverted">
-                    <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/4.jpg" alt="..." /></div>
-                    <div class="timeline-panel">
-                        <div class="timeline-heading">
-                            <h4>July 2020</h4>
-                            <h4 class="subheading">Phase Two Expansion</h4>
-                        </div>
-                        <div class="timeline-body">
-                            <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
-                        </div>
-                    </div>
-                </li>
-                <li class="timeline-inverted">
-                    <div class="timeline-image">
-                        <h4>
-                            Be Part
-                            <br />
-                            Of Our
-                            <br />
-                            Story!
-                        </h4>
-                    </div>
-                </li>
-            </ul>
         </div>
     </section>
     <!-- Team-->
@@ -225,13 +201,9 @@ $quizs = getAllQuizsPublic();
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-8 mx-auto text-center">
-                    <p class="large text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
-                </div>
-            </div>
+
         </div>
-    </section>  
+    </section>
     <!-- Footer-->
     <footer class="footer py-4">
         <div class="container">
@@ -286,8 +258,8 @@ $quizs = getAllQuizsPublic();
                     <div class="row justify-content-center">
                         <div class="col-lg-8">
                             <div class="modal-body">
-                                
-                            
+
+
 
                             </div>
                         </div>
@@ -297,10 +269,6 @@ $quizs = getAllQuizsPublic();
         </div>
     </div>
 
-    <div class="text-center">
-        <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#login">Launch
-            Modal Register Form</a>
-    </div>
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->

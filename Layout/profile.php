@@ -46,7 +46,7 @@ editProfile();
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                     <h1 class="h2">Profile</h1>
-                    <a class="btn btn-danger" href="../includes/profileFunction.php?Delete_User=<?php echo $user['id_user'] ?>" onclick="confirmDelete(event)">Delete</a>
+                    <a class="btn btn-danger" href="../includes/profileFunction.php?Delete_User=<?php echo $user['id_user'] ?>" onclick="confirmDelete(event)"> <span data-feather="trash-2"></span> Delete</a>
                 </div>
                 <!-- Profile content -->
                 <div class="col-12 p-5">
@@ -55,27 +55,26 @@ editProfile();
                         <input type="hidden" name="id_user" value="<?php echo $user['id_user']; ?>">
                         <input type="hidden" name="mpDB" value="<?php echo $user['mp']; ?>">
                         <div class="mb-3">
-                            <label for="fname" class="form-label">First Name</label>
+                            <label for="fname" class="form-label font-weight-bold">First Name</label>
                             <input name="fname" value="<?php echo $user['first_name']; ?>" type="text" class="form-control" id="fname">
                         </div>
                         <div class="mb-3">
-                            <label for="lname" class="form-label">Last Name</label>
+                            <label for="lname" class="form-label font-weight-bold">Last Name</label>
                             <input name="lname" value="<?php echo $user['last_name']; ?>" type="text" class="form-control" id="lname">
                         </div>
                         <div class="mb-3">
-                            <label for="email" class="form-label">Email address</label>
-                            <input name="email" value="<?php echo $user['email']; ?>" type="email" class="form-control" id="email" aria-describedby="emailHelp">
-                            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                            <label for="email" class="form-label font-weight-bold">Email address</label>
+                            <input name="email" value="<?php echo $user['email']; ?>" type="email" class="form-control" id="email">
                         </div>
                         <div class="mb-3">
-                            <label for="CurrentPassword" class="form-label">Current Password</label>
+                            <label for="CurrentPassword" class="form-label font-weight-bold">Current Password</label>
                             <input name="CurrentPassword" type="password" class="form-control" id="CurrentPassword">
                         </div>
                         <div class="mb-3">
-                            <label for="NewPassword" class="form-label">New Password</label>
+                            <label for="NewPassword" class="form-label font-weight-bold">New Password</label>
                             <input name="NewPassword" type="password" class="form-control" id="NewPassword">
                         </div>
-                        <button type="submit" class="btn btn-primary">Save</button>
+                        <button type="submit" class="btn btn-danger" style="background-color: #28282B; border-color: #28282B; ">Save</button>
                     </form>
                 </div>
             </main>

@@ -7,6 +7,15 @@ $id_Quiz = $_GET['id_Quiz'];
 $id_passQuiz=$_GET['id_passQuiz'];
 $titleQuiz = getTitleQuiz($id_Quiz);
 $questions = getAllQuestion($id_Quiz);
+function getNoteuser($idPass){
+    $conn = connect();
+  $requette ="SELECT * FROM `pass_quiz` WHERE id_pass='$idPass'";
+  $resultat =$conn->query($requette);
+  $passQ=$resultat->fetch();
+  $Noteuser=$passQ['note'];
+  return $Noteuser;
+}
+$noteUser=getNoteuser($id_passQuiz)
 ?>
 
 
@@ -18,8 +27,6 @@ $questions = getAllQuestion($id_Quiz);
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="description" content="">
 	<meta name="author" content="">
-	<link rel="icon" href="/docs/4.1/assets/img/favicons/favicon.ico">
-
 	<title>Quizy</title>
 	<!-- Favicon-->
 	<link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
@@ -47,14 +54,15 @@ $questions = getAllQuestion($id_Quiz);
 			<main  role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
 			<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
 					<h1 class="h2"><?php echo $titleQuiz; ?></h1>
+					<h1 class="text-white btn btn-danger p-2" style="background-color: #28282B; border-color: #28282B; ">Your Note is : <span class="text-white"><?php echo $noteUser; ?></span></h1>
 				</div>
 				<form method="post" action="work.php">
 					<?php
 					// Output each question with choices
 					foreach ($questions as $index => $question) {
 					?>
-						<div class="card">
-							<div class="card-header"><?php echo $index+1 ; ?>:<?php echo $question["title_question"];?></div>
+						<div class="card mb-3">
+						<div class="card-header font-weight-bold"><?php echo $index + 1; ?> : <?php echo $question["title_question"]; ?></div>
 							<div class="card-body">
 								<?php 
 								$selectedAnswer=getAnswersSlected($question["id_question"],$id_User,$id_Quiz,$id_passQuiz);

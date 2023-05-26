@@ -5,8 +5,8 @@
     </div>
     <!-- list quiz -->
     <div>
-        <table class="table">
-            <thead>
+        <table class="table table-borderless">
+            <thead class="table-dark ">
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Title quiz</th>
@@ -22,18 +22,20 @@
                 $i = 0;
                 foreach ($quizs as $quiz) {
                     $i++;
-                    print '
+                    ?>
+                    
                               <tr>
-                                <th scope="row">' . $i . '</th>
-                                <td>' . $quiz['title_quiz'] . '</td>
-                                <td>' . $quiz['quiz_description'] . '</td>
-                                <td>' . $quiz['note'] . '</td>
-                                <td>' . $quiz['date'] . '</td>
+                                <th scope="row"><?php echo $i?></th>
+                                <td><?php echo $quiz['title_quiz']?></td>
+                                <td><?php echo $quiz['quiz_description']?></td>
+                                <td><?php echo $quiz['note']?></td>
+                                <td><?php echo $quiz['date']?></td>
                                 <td>
-                                <a class="btn btn-danger" href="../includes/ViewAnswersUser.php?id_Quiz=' . $quiz['id_quiz'] . '&id_user='.$_SESSION['id_user'].'&id_passQuiz='.$quiz['id_pass'].'&activeMarke=mypassage">View result</a>
+                                <a class="btn btn-danger text-white" style="background-color: #28282B; border-color: #28282B;" href="../includes/ViewAnswersUser.php?id_Quiz=<?php echo $quiz['id_quiz']?>&id_user=<?php echo $_SESSION['id_user']?>&id_passQuiz=<?php echo $quiz['id_pass']?>&activeMarke=mypassage"><span class="text-white" data-feather="file-text"></span>view answers</a>
                                 </td>
                               </tr>
-                                       ';
+                                       
+               <?php
                 }
                 ?>
             </tbody>

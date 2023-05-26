@@ -17,8 +17,8 @@ $quizs = getAllQuizsPublic();
 	<meta name="description" content="">
 	<meta name="author" content="">
 	<link rel="icon" href="/docs/4.1/assets/img/favicons/favicon.ico">
-    <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+	<!-- Favicon-->
+	<link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
 	<title>Quizy</title>
 
 	<link rel="canonical" href="https://getbootstrap.com/docs/4.1/examples/dashboard/">
@@ -43,24 +43,11 @@ $quizs = getAllQuizsPublic();
 			?>
 			<!-- main  -->
 			<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-
-				<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-					<div>
-						<form class="form-inline" method="post" action="passQuiz.php">
-							<div class="form-group mb-2">
-								<h4>for participate in special quiz paste the link:</h4>
-							</div>
-							<div class="form-group mx-sm-3 mb-2">
-								<input name="input_url" type="text" class="form-control" id="url" placeholder="https//exampel.com">
-							</div>
-							<button type="submit" class="btn btn-primary mt-2 mb-2">Go to Link</button>
-						</form>
-					</div>
+				<div class="d-flex justify-content-between align-items-center pt-3 pb-2 mb-3 border-bottom">
+					<h1 class="h2">Available Quizzes to Pass</h1>
+					<a class="btn btn-danger text-white" style="background-color: #28282B; border-color: #28282B;" data-toggle="modal" data-target="#enterQuiz">Participate in Private Quizzes</a>
 				</div>
 
-				<div class="d-flex justify-content-center flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom ">
-					<h1 class="h2">Available Quizs to pass.</h1>
-				</div>
 
 				<!-- main content -->
 				<div>
@@ -107,6 +94,33 @@ $quizs = getAllQuizsPublic();
 		</div>
 	</div>
 
+	<!-- participate in private quizzes -->
+	<div class="modal fade" id="enterQuiz" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-scrollable">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalScrollableTitle">Participate in private quizzes </h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<form method="post" action="passQuiz.php">
+						<div class="form-group">
+							<h4>for participate in special quiz paste the link:</h4>
+						</div>
+						<div class="form-group">
+							<input name="input_url" type="text" class="form-control" id="url" placeholder="https//exampel.com" required>
+						</div>
+						<div class="modal-footer">
+							<button type="submit" class="btn btn-danger" style="background-color: #28282B; border-color: #28282B; ">Participate</button>
+						</div>
+
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
 	<!-- Bootstrap core JavaScript
     ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->
