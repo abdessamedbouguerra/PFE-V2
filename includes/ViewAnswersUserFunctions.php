@@ -25,4 +25,8 @@ function getCaseAnswersSlected($id_question,$id_ueser,$id_quiz,$idPassQuiz){
     }
     return $AnswersCase;
 }
+
+
+$requette = "SELECT  pass_quiz.id_pass, pass_quiz.id_quiz, quiz.title_quiz, quiz.quiz_description, pass_quiz.note , pass_quiz.date   FROM pass_quiz INNER JOIN quiz ON quiz.id_quiz=pass_quiz.id_quiz WHERE pass_quiz.id_user = $id_U";
+
 ?>

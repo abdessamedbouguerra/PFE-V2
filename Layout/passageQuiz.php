@@ -45,16 +45,15 @@ $quizs = getAllQuizsPublic();
 			<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
 
 				<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-					<h1 class="h2">Entering a special Quiz.</h1>
 					<div>
 						<form class="form-inline" method="post" action="passQuiz.php">
 							<div class="form-group mb-2">
-								<h4>Put the link:</h4>
+								<h4>for participate in special quiz paste the link:</h4>
 							</div>
 							<div class="form-group mx-sm-3 mb-2">
 								<input name="input_url" type="text" class="form-control" id="url" placeholder="https//exampel.com">
 							</div>
-							<button type="submit" class="btn btn-primary mb-2">Entering</button>
+							<button type="submit" class="btn btn-primary mt-2 mb-2">Go to Link</button>
 						</form>
 					</div>
 				</div>

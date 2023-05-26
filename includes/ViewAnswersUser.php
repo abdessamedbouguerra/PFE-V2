@@ -1,16 +1,12 @@
 <?php
+
 session_start();
-if (!isset($_SESSION['email'])) {
-	header('location:../Layout/login.php');
-}
 include '../includes/ViewAnswersUserFunctions.php';
 $id_User=$_GET['id_user'];
 $id_Quiz = $_GET['id_Quiz'];
 $id_passQuiz=$_GET['id_passQuiz'];
 $titleQuiz = getTitleQuiz($id_Quiz);
 $questions = getAllQuestion($id_Quiz);
-$selectedAnswer=getAnswersSlected($question["id_question"],$id_User,$id_Quiz,$id_passQuiz);
-$answerCase =getCaseAnswersSlected($question["id_question"],$id_User,$id_Quiz,$id_passQuiz);
 ?>
 
 
@@ -23,10 +19,10 @@ $answerCase =getCaseAnswersSlected($question["id_question"],$id_User,$id_Quiz,$i
 	<meta name="description" content="">
 	<meta name="author" content="">
 	<link rel="icon" href="/docs/4.1/assets/img/favicons/favicon.ico">
-    <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
-	<title>Quizy</title>
 
+	<title>Quizy</title>
+	<!-- Favicon-->
+	<link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
 	<link rel="canonical" href="https://getbootstrap.com/docs/4.1/examples/dashboard/">
 
 	<!-- Bootstrap core CSS -->
@@ -44,7 +40,7 @@ $answerCase =getCaseAnswersSlected($question["id_question"],$id_User,$id_Quiz,$i
 		<div class="row">
 			<!-- sidebar -->
 			<?php
-			$activeMarke =$_GET['activeMarke'];
+			$activeMarke = $_GET['activeMarke'];
 			 include '../includes/sidebar.php' 
 			 ?>
 			<!-- main Quiz -->
@@ -57,9 +53,13 @@ $answerCase =getCaseAnswersSlected($question["id_question"],$id_User,$id_Quiz,$i
 					// Output each question with choices
 					foreach ($questions as $index => $question) {
 					?>
-						<div class="card mb-3">
-							<div class="card-header font-weight-bold"><?php echo $index+1 ; ?> : <?php echo $question["title_question"];?></div>
+						<div class="card">
+							<div class="card-header"><?php echo $index+1 ; ?>:<?php echo $question["title_question"];?></div>
 							<div class="card-body">
+								<?php 
+								$selectedAnswer=getAnswersSlected($question["id_question"],$id_User,$id_Quiz,$id_passQuiz);
+								$answerCase =getCaseAnswersSlected($question["id_question"],$id_User,$id_Quiz,$id_passQuiz);
+								?>
 								<div class="form-group">
 									<div class="form-check" <?php if ($question["ch1"] == $selectedAnswer) {			
 															  if ($answerCase) {
@@ -143,7 +143,18 @@ $answerCase =getCaseAnswersSlected($question["id_question"],$id_User,$id_Quiz,$i
 	<!-- Graphs -->
 	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.7.1/dist/Chart.min.js"></script>
 
+	<!--  -->
+	<script data-timeout="<?php //echo $timeout; ?>">
+    // Set the session timeout in seconds
+    const timeout = parseInt(document.currentScript.dataset.timeout); // Change this value to set the desired session timeout in seconds
 
+    // Set the session start time
+    
+      //setTimeout(() => {
+      //  window.location.href = 'http://localhost:81/fromgit/PFE_V1/index.php';
+      //}, 5000);
+    
+  </script> 
   
 </body>
 

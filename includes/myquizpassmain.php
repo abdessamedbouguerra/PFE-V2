@@ -30,7 +30,7 @@
                                 <td>' . $quiz['note'] . '</td>
                                 <td>' . $quiz['date'] . '</td>
                                 <td>
-                                    <a class="btn btn-danger" href="../includes/ViewAnswersUser.php?id_Quiz=' . $quiz['id_quiz'] . '&id_user='.$_SESSION['id_user'].'&id_passQuiz='.$quiz['id_pass'].'&activeMarke=mypassage">View result</a>
+                                <a class="btn btn-danger" href="../includes/ViewAnswersUser.php?id_Quiz=' . $quiz['id_quiz'] . '&id_user='.$_SESSION['id_user'].'&id_passQuiz='.$quiz['id_pass'].'&activeMarke=mypassage">View result</a>
                                 </td>
                               </tr>
                                        ';

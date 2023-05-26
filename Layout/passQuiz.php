@@ -147,44 +147,42 @@ $quiz = getQuizById($idQ);
 	<!-- countdown scripts -->
 	<script>
 		// // Get the time from the PHP variable
-		// var timeString = "<?php echo $quiz['quiz_duration']; ?>";
+		var timeString = "<?php echo $quiz['quiz_duration']; ?>";
 
-		// // Split the time into hours, minutes, and seconds
-		// var timeParts = timeString.split(':');
-		// var hours = parseInt(timeParts[0]);
-		// var minutes = parseInt(timeParts[1]);
-		// var seconds = parseInt(timeParts[2]);
+		// Split the time into hours, minutes, and seconds
+		var timeParts = timeString.split(':');
+		var hours = parseInt(timeParts[0]);
+		var minutes = parseInt(timeParts[1]);
+		var seconds = parseInt(timeParts[2]);
 
-		// // Set the countdown date by adding the hours, minutes, and seconds to the current date and time
-		// var countdownDate = new Date();
-		// countdownDate.setHours(countdownDate.getHours() + hours);
-		// countdownDate.setMinutes(countdownDate.getMinutes() + minutes);
-		// countdownDate.setSeconds(countdownDate.getSeconds() + seconds);
+		// Set the countdown date by adding the hours, minutes, and seconds to the current date and time
+		var countdownDate = new Date();
+		countdownDate.setHours(countdownDate.getHours() + hours);
+		countdownDate.setMinutes(countdownDate.getMinutes() + minutes);
+		countdownDate.setSeconds(countdownDate.getSeconds() + seconds);
 
-		// // Update the countdown every second
-		// var countdown = setInterval(function() {
-		// 	// Get the current date and time
-		// 	var now = new Date().getTime();
+		// Update the countdown every second
+		var countdown = setInterval(function() {
+			// Get the current date and time
+			var now = new Date().getTime();
 
-		// 	// Calculate the time remaining
-		// 	var distance = countdownDate - now;
+			// Calculate the time remaining
+			var distance = countdownDate - now;
 
-		// 	// Calculate days, hours, minutes, and seconds
-		// 	var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-		// 	var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-		// 	var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-		// 	var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+			// Calculate days, hours, minutes, and seconds
+			var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+			var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+			var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+			var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-		// 	// Display the countdown in the element with id "countdown"
-		// 	document.getElementById("countdown").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+			// Display the countdown in the element with id "countdown"
+			document.getElementById("countdown").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
 
-		// 	// If the countdown is finished, display a message
-		// 	if (distance < 0) {
-		// 		clearInterval(countdown);
-		// 		document.getElementById("countdown").innerHTML = "Countdown Finished";
-		// 		document.getElementById('Quizform').submit();
-		// 	}
-		// }, 1000);
+			// If the countdown is finished, display a message
+			if (distance < 0) {
+				document.getElementById('Quizform').submit();
+			}
+		}, 1000);
 	</script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.16.6/sweetalert2.all.min.js"></script>
 	<script>

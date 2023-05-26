@@ -22,7 +22,7 @@
                         <li class="nav-item">
                             <a class="nav-link <?php echo ($activeMarke == 'quizs') ? 'active' : ''; ?>" href="../Layout/quizs.php">
                                 <span data-feather="file"></span>
-                                Quizs
+                                Quizzes
                             </a>
                         </li>
                         <li class="nav-item">
