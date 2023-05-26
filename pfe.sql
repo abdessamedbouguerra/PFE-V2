@@ -2,8 +2,8 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: May 27, 2023 at 12:23 AM
+-- Host: localhost
+-- Generation Time: May 27, 2023 at 12:47 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -33,7 +33,7 @@ CREATE TABLE `answers_users` (
   `id_question` int(11) DEFAULT NULL,
   `id_quiz` int(11) DEFAULT NULL,
   `id_pass_quiz` int(11) DEFAULT NULL,
-  `answer` int(11) DEFAULT NULL,
+  `answer` text DEFAULT NULL,
   `answer_case` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -42,15 +42,49 @@ CREATE TABLE `answers_users` (
 --
 
 INSERT INTO `answers_users` (`id_answer_user`, `id_user`, `id_question`, `id_quiz`, `id_pass_quiz`, `answer`, `answer_case`) VALUES
-(8854, 14, 49, 42, 96, 0, 1),
-(8855, 14, 50, 42, 96, 0, 1),
-(8856, 14, 51, 42, 96, 0, 0),
-(8857, 14, 53, 42, 96, 0, 0),
-(8858, 14, 54, 42, 96, 0, 1),
-(8859, 14, 55, 42, 96, 0, 1),
-(8860, 14, 56, 42, 96, 0, 1),
-(8861, 14, 57, 42, 96, 0, 0),
-(8862, 14, 58, 42, 96, 0, 0);
+(8921, 14, 49, 42, 106, 'pourquoi', 0),
+(8922, 14, 50, 42, 106, 'entière.', 0),
+(8923, 14, 51, 42, 106, 'ses', 0),
+(8924, 14, 54, 42, 106, 'annonce', 0),
+(8925, 14, 55, 42, 106, 'cliquer', 0),
+(8926, 14, 56, 42, 106, 'bien que ', 0),
+(8927, 14, 57, 42, 106, 'disparate', 1),
+(8928, 14, 58, 42, 106, 'exergue', 0),
+(8929, 14, 49, 42, 107, 'comment', 1),
+(8930, 14, 50, 42, 107, 'complète.', 1),
+(8931, 14, 51, 42, 107, 'leurs', 0),
+(8932, 14, 52, 42, 107, 'avec', 0),
+(8933, 14, 53, 42, 107, 'surprise', 0),
+(8934, 14, 45, 14, 108, '333', 1),
+(8935, 14, 46, 14, 108, '3333', 1),
+(8936, 14, 48, 14, 108, '11111', 1),
+(8937, 14, 43, 14, 111, '2', 0),
+(8938, 14, 44, 14, 111, '22', 1),
+(8939, 14, 45, 14, 111, '222', 0),
+(8940, 14, 46, 14, 111, '2222', 0),
+(8941, 14, 43, 14, 112, '1', 1),
+(8942, 14, 44, 14, 112, '11', 0),
+(8943, 14, 45, 14, 112, '111', 0),
+(8944, 14, 48, 14, 113, '22222', 0),
+(8945, 14, 43, 14, 114, '2', 0),
+(8946, 14, 44, 14, 114, '22', 1),
+(8947, 14, 45, 14, 114, '222', 0),
+(8948, 14, 46, 14, 114, '2222', 0),
+(8949, 14, 48, 14, 114, '22222', 0),
+(8950, 14, 49, 42, 116, 'comment', 1),
+(8951, 14, 50, 42, 116, 'entière.', 0),
+(8952, 14, 53, 42, 116, 'déçue', 0),
+(8953, 14, 56, 42, 116, 'bien que ', 0),
+(8954, 14, 49, 42, 117, 'comment', 1),
+(8955, 14, 50, 42, 117, 'entière.', 0),
+(8956, 14, 51, 42, 117, 'leurs', 0),
+(8957, 14, 52, 42, 117, 'avec', 0),
+(8958, 14, 53, 42, 117, 'surprise', 0),
+(8959, 14, 54, 42, 117, 'annonce', 0),
+(8960, 14, 55, 42, 117, 'cliquer', 0),
+(8961, 14, 56, 42, 117, 'afin que ', 0),
+(8962, 14, 57, 42, 117, 'disparate', 1),
+(8963, 14, 58, 42, 117, 'abyme', 0);
 
 -- --------------------------------------------------------
 
@@ -71,7 +105,18 @@ CREATE TABLE `pass_quiz` (
 --
 
 INSERT INTO `pass_quiz` (`id_pass`, `id_user`, `id_quiz`, `date`, `note`) VALUES
-(96, 14, 42, '2023-05-27', 5);
+(106, 14, 42, '2023-05-25', 1),
+(107, 14, 42, '2023-05-25', 2),
+(108, 14, 14, '2023-05-25', 3),
+(109, 14, 14, '2023-05-25', 0),
+(110, 14, 14, '2023-05-25', 0),
+(111, 14, 14, '2023-05-26', 1),
+(112, 14, 14, '2023-05-26', 1),
+(113, 14, 14, '2023-05-26', 0),
+(114, 14, 14, '2023-05-26', 1),
+(115, 14, 42, '2023-05-26', 0),
+(116, 14, 42, '2023-05-27', 1),
+(117, 14, 42, '2023-05-27', 2);
 
 -- --------------------------------------------------------
 
@@ -109,7 +154,7 @@ INSERT INTO `question` (`id_question`, `id_quiz`, `title_question`, `ch1`, `ch2`
 (48, 14, 'question11111', '11111', '22222', '33333', '44444', '11111'),
 (49, 42, 'Je m’appelle Gian. Et toi, … … tu t’appelles ?﻿', 'comment', 'pourquoi', 'quand', 'quand', 'comment'),
 (50, 42, 'Attention ! La séance de 18 heures pour le film « Folie douce » est… … Il reste des places pour la séance de 20 heures. Merci de votre compréhension.', 'complète.', 'entière.', 'nombreuse', 'nombreuse', 'complète.'),
-(51, 42, 'Avec le programme « Jeunes d’Europe », finissez… … études à l’étranger.', 'leurs', 'mes', 'ses', 'ses', 'vos'),
+(51, 42, 'Avec le programme « Jeunes d’Europe », finissez… … études à l’étranger.', 'leurs', 'mes', 'ses', 'ses', 'ses'),
 (52, 42, 'Venez profiter des promotions ! Cette semaine, trois paquets de café… … le prix de deux !﻿', 'avec', 'par', 'pour', 'pour', 'pour'),
 (53, 42, 'Salut Léa ! On va au cinéma ce soir ? J’attends les résultats de mon examen demain et je me sens vraiment… … J’ai besoin de sortir un peu ! Amélie', 'surprise', 'déçue', 'désolée', 'désolée', 'nerveuse'),
 (54, 42, 'Cet après-midi, aussitôt après les déclarations de la direction à la presse, le syndicat… … son plan d’action que les employés attendent avec impatience.', 'annonçait', 'annonce', 'annoncera', 'annoncera', 'annoncera'),
@@ -140,9 +185,10 @@ CREATE TABLE `quiz` (
 --
 
 INSERT INTO `quiz` (`id_quiz`, `id_user`, `title_quiz`, `situation_quiz`, `url_quiz`, `quiz_duration`, `quiz_description`, `image`) VALUES
-(14, 14, 'test1', 0, 'localhost/testing/PFE_V1/Layout/passQuiz.php?id=14', '00:01:00', 'description1', 'quiz1.png'),
+(14, 14, 'test1', 0, 'localhost/testing/PFE_V1/Layout/passQuiz.php?id=14', '00:01:00', 'description10', 'quiz1.png'),
 (23, 16, 'tett', 0, 'localhost/testing/PFE_V1/Layout/passQuiz.php?id=23', '05:05:00', 'dtt', 'quiz1.png'),
-(42, 14, 'STRUCTURE DE LA LANGUE', 0, 'localhost/testing/PFE_V1/Layout/passQuiz.php?id=42', '00:05:00', 'TCF test', 'tcf.png');
+(42, 14, 'STRUCTURE DE LA LANGUE', 0, 'localhost/testing/PFE_V1/Layout/passQuiz.php?id=42', '00:05:00', 'hihihihih', 'tcf.png'),
+(44, 14, 'dsd', 1, 'localhost/testing/PFE_V1/Layout/passQuiz.php?id=44', '00:00:00', 'dsd', '0');
 
 -- --------------------------------------------------------
 
@@ -211,25 +257,25 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `answers_users`
 --
 ALTER TABLE `answers_users`
-  MODIFY `id_answer_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8863;
+  MODIFY `id_answer_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8964;
 
 --
 -- AUTO_INCREMENT for table `pass_quiz`
 --
 ALTER TABLE `pass_quiz`
-  MODIFY `id_pass` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
+  MODIFY `id_pass` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=118;
 
 --
 -- AUTO_INCREMENT for table `question`
 --
 ALTER TABLE `question`
-  MODIFY `id_question` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `id_question` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --
 -- AUTO_INCREMENT for table `quiz`
 --
 ALTER TABLE `quiz`
-  MODIFY `id_quiz` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id_quiz` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT for table `users`
