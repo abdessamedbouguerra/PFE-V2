@@ -1,21 +1,27 @@
 <?php
 
 session_start();
-include '../includes/ViewAnswersUserFunctions.php';
-$id_User=$_GET['id_user'];
+include '../includes/functions.php';
+$id_User = $_GET['id_user'];
 $id_Quiz = $_GET['id_Quiz'];
-$id_passQuiz=$_GET['id_passQuiz'];
+$id_passQuiz = $_GET['id_passQuiz'];
 $titleQuiz = getTitleQuiz($id_Quiz);
 $questions = getAllQuestion($id_Quiz);
-function getNoteuser($idPass){
-    $conn = connect();
-  $requette ="SELECT * FROM `pass_quiz` WHERE id_pass='$idPass'";
-  $resultat =$conn->query($requette);
-  $passQ=$resultat->fetch();
-  $Noteuser=$passQ['note'];
-  return $Noteuser;
+function getNoteuser($idPass)
+{
+	$conn = connect();
+	$requette = "SELECT * FROM `pass_quiz` WHERE id_pass='$idPass'";
+	$resultat = $conn->query($requette);
+	$passQ = $resultat->fetch();
+	$Noteuser = $passQ['note'];
+	return $Noteuser;
 }
-$noteUser=getNoteuser($id_passQuiz)
+
+
+    
+    
+$noteUser = getNoteuser($id_passQuiz);
+
 ?>
 
 
@@ -42,17 +48,17 @@ $noteUser=getNoteuser($id_passQuiz)
 <body>
 	<!-- navbar -->
 	<?php include '../includes/NavbarOfContent.php' ?>
-	
+
 	<div class="container-fluid">
 		<div class="row">
 			<!-- sidebar -->
 			<?php
 			$activeMarke = $_GET['activeMarke'];
-			 include '../includes/sidebar.php' 
-			 ?>
+			include '../includes/sidebar.php'
+			?>
 			<!-- main Quiz -->
-			<main  role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-			<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+			<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+				<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
 					<h1 class="h2"><?php echo $titleQuiz; ?></h1>
 					<h1 class="text-white btn btn-danger p-2" style="background-color: #28282B; border-color: #28282B; ">Your Note is : <span class="text-white"><?php echo $noteUser; ?></span></h1>
 				</div>
@@ -62,66 +68,117 @@ $noteUser=getNoteuser($id_passQuiz)
 					foreach ($questions as $index => $question) {
 					?>
 						<div class="card mb-3">
-						<div class="card-header font-weight-bold"><?php echo $index + 1; ?> : <?php echo $question["title_question"]; ?></div>
+							<div class="card-header font-weight-bold"><?php echo $index + 1; ?> : <?php echo $question["title_question"]; ?></div>
 							<div class="card-body">
-								<?php 
-								$selectedAnswer=getAnswersSlected($question["id_question"],$id_User,$id_Quiz,$id_passQuiz);
-								$answerCase =getCaseAnswersSlected($question["id_question"],$id_User,$id_Quiz,$id_passQuiz);
+								<?php
+								$id_question=$question["id_question"];
+								$conn = connect();
+    $requette ="SELECT answer,answer_case FROM answers_users WHERE  id_pass_quiz='$id_passQuiz' AND id_question='$id_question'";
+	$resultat =$conn->query($requette);
+	$AnswersUser =$resultat->fetch();
 								?>
 								<div class="form-group">
-									<div class="form-check" <?php if ($question["ch1"] == $selectedAnswer) {			
-															  if ($answerCase) {
-																echo 'style="background: #00FF00;"';
-															}else{
-																echo 'style="background: #FF0000;"';
+									<div class="form-check" <?php
+															if (!empty($AnswersUser)) {
+																if (strcmp($question["ch1"], $AnswersUser["answer"]) === 0) {
+																	if ($AnswersUser["answer_case"]) {
+																		echo 'style="background: #00FF00;"';
+																	} else {
+																		echo 'style="background: #FF0000;"';
+																	}
+																}
 															}
-														}	
-															  ?>>
-										<input class="form-check-input" type="radio" name="answer_Question_<?php echo $index ; ?>" value="<?php echo $question["ch1"]; ?>"<?php echo ($question["ch1"] == $selectedAnswer) ? 'checked' : ''; ?> disabled>
+															?>>
+										<input class="form-check-input" type="radio" name="answer_Question_<?php echo $index; ?>" value="<?php echo $question["ch1"]; ?>" <?php
+																																											if (!empty($AnswersUser)) {
+																																												if (strcmp($question["ch1"], $AnswersUser["answer"]) === 0) {
+																																													echo 'checked';
+																																												} else {
+																																													echo '';
+																																												}
+																																											}
+																																											?> disabled>
 										<label class="form-check-label">
-
 											<?php echo $question["ch1"]; ?>
 										</label>
 									</div>
-									<div class="form-check" <?php if ($question["ch2"] == $selectedAnswer) {			
-															  if ($answerCase) {
-																echo 'style="background: #00FF00;"';
-															}else{
-																echo 'style="background: #FF0000;"';
+
+									<div class="form-check" <?php
+															if (!empty($AnswersUser)) {
+																if (strcmp($question["ch2"], $AnswersUser["answer"]) === 0) {
+																	if ($AnswersUser["answer_case"]) {
+																		echo 'style="background: #00FF00;"';
+																	} else {
+																		echo 'style="background: #FF0000;"';
+																	}
+																}
 															}
-														}	
-															  ?>>
-										<input class="form-check-input" type="radio" name="answer_Question_<?php echo $index ; ?>" value="<?php echo $question["ch2"]; ?>"<?php echo ($question["ch2"] == $selectedAnswer) ? 'checked' : ''; ?> disabled>
+															?>>
+										<input class="form-check-input" type="radio" name="answer_Question_<?php echo $index; ?>" value="<?php echo $question["ch2"]; ?>" <?php
+																																											if (!empty($AnswersUser)) {
+																																												if (strcmp($question["ch2"], $AnswersUser["answer"]) === 0) {
+																																													echo 'checked';
+																																												} else {
+																																													echo '';
+																																												}
+																																											}
+																																											?> disabled>
 										<label class="form-check-label">
 											<?php echo $question["ch2"]; ?>
 										</label>
 									</div>
-									<div class="form-check" <?php if ($question["ch3"] == $selectedAnswer) {			
-															  if ($answerCase) {
-																echo 'style="background: #00FF00;"';
-															}else{
-																echo 'style="background: #FF0000;"';
+
+									<div class="form-check" <?php
+															if (!empty($AnswersUser)) {
+																if (strcmp($question["ch3"], $AnswersUser["answer"]) === 0) {
+																	if ($AnswersUser["answer_case"]) {
+																		echo 'style="background: #00FF00;"';
+																	} else {
+																		echo 'style="background: #FF0000;"';
+																	}
+																}
 															}
-														}	
-															  ?>>
-										<input class="form-check-input" type="radio" name="answer_Question_<?php echo $index ; ?>" value="<?php echo $question["ch3"]; ?>"<?php echo ($question["ch3"] == $selectedAnswer) ? 'checked' : ''; ?> disabled>
+															?>>
+										<input class="form-check-input" type="radio" name="answer_Question_<?php echo $index; ?>" value="<?php echo $question["ch3"]; ?>" <?php
+																																											if (!empty($AnswersUser)) {
+																																												if (strcmp($question["ch3"], $AnswersUser["answer"]) === 0) {
+																																													echo 'checked';
+																																												} else {
+																																													echo '';
+																																												}
+																																											}
+																																											?> disabled>
 										<label class="form-check-label">
 											<?php echo $question["ch3"]; ?>
 										</label>
 									</div>
-									<div class="form-check" <?php if ($question["ch4"] == $selectedAnswer) {			
-															  if ($answerCase) {
-																echo 'style="background: #00FF00;"';
-															}else{
-																echo 'style="background: #FF0000;"';
+
+									<div class="form-check" <?php
+															if (!empty($AnswersUser)) {
+																if (strcmp($question["ch4"], $AnswersUser["answer"]) === 0) {
+																	if ($AnswersUser["answer_case"]) {
+																		echo 'style="background: #00FF00;"';
+																	} else {
+																		echo 'style="background: #FF0000;"';
+																	}
+																}
 															}
-														}	
-															  ?>>
-										<input class="form-check-input" type="radio" name="answer_Question_<?php echo $index ; ?>" value="<?php echo $question["ch4"]; ?>"<?php echo ($question["ch4"] == $selectedAnswer) ? 'checked' : ''; ?> disabled>
+															?>>
+										<input class="form-check-input" type="radio" name="answer_Question_<?php echo $index; ?>" value="<?php echo $question["ch4"]; ?>" <?php
+																																											if (!empty($AnswersUser)) {
+																																												if (strcmp($question["ch4"], $AnswersUser["answer"]) === 0) {
+																																													echo 'checked';
+																																												} else {
+																																													echo '';
+																																												}
+																																											}
+																																											?> disabled>
 										<label class="form-check-label">
 											<?php echo $question["ch4"]; ?>
 										</label>
 									</div>
+
+									
 								</div>
 							</div>
 						</div>
@@ -129,7 +186,7 @@ $noteUser=getNoteuser($id_passQuiz)
 					}
 					?>
 				</form>
-				</main>
+			</main>
 		</div>
 	</div>
 
@@ -152,18 +209,18 @@ $noteUser=getNoteuser($id_passQuiz)
 	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.7.1/dist/Chart.min.js"></script>
 
 	<!--  -->
-	<script data-timeout="<?php //echo $timeout; ?>">
-    // Set the session timeout in seconds
-    const timeout = parseInt(document.currentScript.dataset.timeout); // Change this value to set the desired session timeout in seconds
+	<script data-timeout="<?php //echo $timeout; 
+							?>">
+		// Set the session timeout in seconds
+		const timeout = parseInt(document.currentScript.dataset.timeout); // Change this value to set the desired session timeout in seconds
 
-    // Set the session start time
-    
-      //setTimeout(() => {
-      //  window.location.href = 'http://localhost:81/fromgit/PFE_V1/index.php';
-      //}, 5000);
-    
-  </script> 
-  
+		// Set the session start time
+
+		//setTimeout(() => {
+		//  window.location.href = 'http://localhost:81/fromgit/PFE_V1/index.php';
+		//}, 5000);
+	</script>
+
 </body>
 
 </html>
