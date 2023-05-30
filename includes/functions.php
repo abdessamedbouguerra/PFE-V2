@@ -93,7 +93,7 @@ function numerQuestionQuiz($id){
 }
 //////////////   function for Generate URl  of the quiz    ////////// 
 function genURL($id_q){
-  $link = "localhost/testing/PFE_V1/Layout/passQuiz.php?id=$id_q";
+  $link = "localhost/testing/PFE-V2/Layout/passQuiz.php?id=$id_q";
   return $link;
 }
 //////////////   function for get URl  of the quiz    ////////// 
