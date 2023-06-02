@@ -90,12 +90,13 @@ $quizs = getAllQuizsOfUser($_SESSION['id_user']);
                         <div class="form-group">
                             <textarea name="desription_quiz" class="form-control" placeholder="Desription of a quiz." required></textarea>
                         </div>
-                        <!-- <div class="form-group">
-                            <input name="quiz_duration" type="text" class="form-control timepicker" id="timepicker" placeholder="Select a time">
-                        </div> -->
                         <div class="form-group">
+  <input type="text" name="quiz_duration" class="form-control" pattern="[0-9]{2}:[0-9]{2}:[0-9]{2}" value="00:00:00" placeholder="Time (HH:MM:SS)" required>
+</div>
+
+                        <!-- <div class="form-group">
                                 <input type="time" name="quiz_duration" class="form-control" value="<?php echo '00:00:00'; ?>" placeholder="time" required>
-                            </div>
+                            </div> -->
                         <div class="form-group">
                             <input class="choose-file" type="file" name="image_quiz" class="form-control">
                         </div>
@@ -143,9 +144,12 @@ $quizs = getAllQuizsOfUser($_SESSION['id_user']);
                             <div class="form-group">
                                 <textarea name="desription_quiz" class="form-control" placeholder="Desription of a quiz." required ><?php echo $quiz['quiz_description']; ?></textarea>
                             </div>
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <input type="time" name="quiz_duration" class="form-control" value="<?php echo $quiz['quiz_duration']; ?>" placeholder="time" required >
-                            </div>
+                            </div> -->
+                            <div class="form-group">
+  <input type="text" name="quiz_duration" class="form-control" pattern="[0-9]{2}:[0-9]{2}:[0-9]{2}" value="<?php echo $quiz['quiz_duration']; ?>" placeholder="Time (HH:MM:SS)" required>
+</div>
                             <div class="form-group">
                             <input class="choose-file" type="file" name="image_quiz" class="form-control">
                             <input type="hidden" name="old_img_quiz" value="<?php echo $quiz['image'];?>">

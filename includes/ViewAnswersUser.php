@@ -21,7 +21,7 @@ function getNoteuser($idPass)
     
     
 $noteUser = getNoteuser($id_passQuiz);
-
+$numQuestion=numerQuestionQuiz($id_Quiz);
 ?>
 
 
@@ -60,7 +60,7 @@ $noteUser = getNoteuser($id_passQuiz);
 			<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
 				<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
 					<h1 class="h2"><?php echo $titleQuiz; ?></h1>
-					<h1 class="text-white btn btn-danger p-2" style="background-color: #28282B; border-color: #28282B; ">Your Note is : <span class="text-white"><?php echo $noteUser; ?></span></h1>
+					<h1 class="text-white btn btn-danger p-2" style="background-color: #28282B; border-color: #28282B; ">Your Note is : <span class="text-white"><?php echo $noteUser; ?></span>/<?php echo $numQuestion ?></h1>
 				</div>
 				<form method="post" action="work.php">
 					<?php
